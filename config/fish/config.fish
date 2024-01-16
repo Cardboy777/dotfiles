@@ -3,8 +3,8 @@ if status is-interactive
 end
 
 # Setup custom environment
-if test -e ~/Scripts/fish/shell-init.fish
-  source ~/Scripts/fish/shell-init.fish
+if test -e ~/Repositories/dotfiles/scripts/fish/shell-init.fish
+  source ~/Repositories/dotfiles/scripts/fish/shell-init.fish
 end
 
 

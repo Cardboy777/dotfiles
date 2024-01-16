@@ -12,8 +12,8 @@ export PATH="$PATH:$DOTNETTOOL_HOME"
 
 
 # use kwallet for git credentials
-export GIT_ASKPASS=/usr/bin/ksshaskpass
-export SSH_ASKPASS_REQUIRE=prefer
+# export GIT_ASKPASS=/usr/bin/ksshaskpass
+# export SSH_ASKPASS_REQUIRE=prefer
 
 
 #Ship of Harikinian directory variable
