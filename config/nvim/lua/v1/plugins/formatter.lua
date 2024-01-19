@@ -14,8 +14,8 @@ return {
         json = { { 'prettierd', 'prettier' } },
         vue = { { 'prettierd', 'prettier' } },
         c_sharp = { 'csharpier' },
-        c = { 'clang_format' },
-        cpp = { 'clang_format' },
+        -- c = { 'clang_format' },
+        -- cpp = { 'clang_format' },
         go = { 'gofumpt' },
       },
     })

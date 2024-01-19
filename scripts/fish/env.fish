@@ -17,4 +17,4 @@ export PATH="$PATH:$DOTNETTOOL_HOME"
 
 
 #Ship of Harikinian directory variable
-export SHIP_HOME="/media/ssd1/reid/Games/ShipOfHarkinian"
+export SHIP_HOME="/mnt/ssd1/reid/Games/ShipOfHarkinian"

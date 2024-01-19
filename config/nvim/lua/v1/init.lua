@@ -15,8 +15,6 @@ require('v1/lsp/completions')
 
 require('telescope').load_extension('harpoon')
 
-require('bufferline').setup()
-
 -- add Copilot symbol to copilot-cmp suggesttions
 require('lspkind').init({
   symbol_map = {

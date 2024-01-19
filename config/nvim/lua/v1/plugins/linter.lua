@@ -24,8 +24,8 @@ return {
       -- php = {'phpcs'},
       -- java = {'checkstyle'},
       c_sharp = { 'omnisharp' },
-      cpp = { 'cppcheck' },
-      c = { 'cppcheck' },
+      -- cpp = { 'cppcheck' },
+      -- c = { 'cppcheck' },
       -- objc = {'cppcheck'},
       -- swift = {'swiftlint'},
       -- kotlin = {'ktlint'},
@@ -39,17 +39,17 @@ return {
       -- elixir = {'mix'},
     }
 
-    local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
+    local lint_augroup = vim.api.nvim_create_augroup('lint', { clear = true })
 
-    vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
+    vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWritePost', 'InsertLeave' }, {
       group = lint_augroup,
       callback = function()
         lint.try_lint()
       end,
     })
 
-    vim.keymap.set("n", "<leader>l", function()
+    vim.keymap.set('n', '<leader>l', function()
       lint.try_lint()
-    end, { desc = "Trigger linting for current file" })
-  end
+    end, { desc = 'Trigger linting for current file' })
+  end,
 }
