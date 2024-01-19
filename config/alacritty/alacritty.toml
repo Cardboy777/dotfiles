@@ -1,0 +1,16 @@
+shell = "/bin/fish"
+import = [
+  "~/Repositories/dotfiles/config/alacritty/catppuccin-mocha.toml"
+]
+
+[env]
+TERM = "xterm-256color"
+
+[window]
+opacity = 0.80
+blur = true
+decorations = "None"
+padding = { x = 8, y = 0 }
+
+[font]
+normal = { family = "Commit Mono Nerd Font Mono", style= "Bold" }
