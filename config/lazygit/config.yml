@@ -1,0 +1,5 @@
+gui:
+  showBottomLine: false
+  showRandomTip: false
+  nerdfontsVersion: '3'
+disableStartupPopups: true
