@@ -39,6 +39,7 @@ require('lazy').setup({
       -- Automatically install LSPs to stdpath for neovim
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
+      'WhoIsSethDaniel/mason-tool-installer.nvim',
 
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
@@ -109,7 +110,7 @@ require('lazy').setup({
     },
   },
   {
-    -- Set lualine as statusline
+    -- Set lualine as statuslinepluginman
     'nvim-lualine/lualine.nvim',
     -- See `:help lualine.txt`
     opts = {
