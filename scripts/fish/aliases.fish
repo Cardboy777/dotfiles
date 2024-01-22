@@ -10,6 +10,8 @@ alias vim=nvim
 
 alias htop=btop
 
+alias reloadenv=source ~/.config/fish/config.fish
+
 if [ "$XDG_SESSION_DESKTOP" = "KDE" ]
     alias restart-plasma="~/Scripts/bash/restart-plasma.sh"
     alias plasma-restart="restart-plasma"
