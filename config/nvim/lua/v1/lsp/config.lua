@@ -25,6 +25,32 @@ local on_attach = function(_, bufnr)
   nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
   nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
 
+  nmap('td', function()
+    require('trouble').toggle('lsp_definitions')
+  end, '[G]oto [D]efinition')
+
+  nmap('tI', function()
+    require('trouble').toggle('lsp_implementations')
+  end, '[G]oto [I]mplementation')
+
+  nmap('tr', function()
+    require('trouble').toggle('lsp_references')
+  end, '[G]oto [R]eferences')
+
+  nmap('tD', function()
+    require('trouble').toggle('lsp_type_definitions')
+  end, 'Type [D]efinition')
+
+  nmap('tQ', function()
+    require('trouble').toggle('quickfix')
+  end, '[T]oggle [Q]uickfix')
+
+  nmap('tq', function()
+    require('trouble').toggle('workspace_diagnostics')
+  end, { desc = 'Open diagnostics list' })
+
+  nmap('<leader>q', require('trouble').toggle, '[T]rouble [Q]uit')
+
   -- See `:help K` for why this keymap
   nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
   nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
