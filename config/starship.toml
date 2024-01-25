@@ -1,33 +1,89 @@
+add_newline = true
+
+# Tokyo Night - Storm,
+# bg_dark = "#1f2335",
+# bg = "#24283b",
+# bg_highlight = "#292e42",
+# terminal_black = "#414868",
+# fg = "#c0caf5",
+# fg_dark = "#a9b1d6",
+# fg_gutter = "#3b4261",
+# dark3 = "#545c7e",
+# comment = "#565f89",
+# dark5 = "#737aa2",
+# blue0 = "#3d59a1",
+# blue = "#7aa2f7",
+# cyan = "#7dcfff",
+# blue1 = "#2ac3de",
+# blue2 = "#0db9d7",
+# blue5 = "#89ddff",
+# blue6 = "#b4f9f8",
+# blue7 = "#394b70",
+# magenta = "#bb9af7",
+# magenta2 = "#ff007c",
+# purple = "#9d7cd8",
+# orange = "#ff9e64",
+# yellow = "#e0af68",
+# green = "#9ece6a",
+# green1 = "#73daca",
+# green2 = "#41a6b5",
+# teal = "#1abc9c",
+# red = "#f7768e",
+# red1 = "#db4b4b",
+# git = { change = "#6183bb", add = "#449dab", delete = "#914c54" },
+# gitSigns = {
+#   add = "#266d6a",
+#   change = "#536c9e",
+#   delete = "#b2555b",
+# },
+
+# Tokyo Night - Moon
+# bg_dark = "#1e2030",
+# bg = "#222436",
+# bg_highlight = "#2f334d",
+# terminal_black = "#444a73",
+# fg = "#c8d3f5",
+# fg_dark = "#828bb8",
+# fg_gutter = "#3b4261",
+# dark3 = "#545c7e",
+# comment = "#7a88cf",
+# dark5 = "#737aa2",
+# blue0 = "#3e68d7",
+# blue = "#82aaff",
+# cyan = "#86e1fc",
+# blue1 = "#65bcff",
+# blue2 = "#0db9d7",
+# blue5 = "#89ddff",
+# blue6 = "#b4f9f8",
+# blue7 = "#394b70",
+# purple = "#fca7ea",
+# magenta2 = "#ff007c",
+# magenta = "#c099ff",
+# orange = "#ff966c",
+# yellow = "#ffc777",
+# green = "#c3e88d",
+# green1 = "#4fd6be",
+# green2 = "#41a6b5",
+# teal = "#4fd6be",
+# red = "#ff757f",
+# red1 = "#c53b53",
 
 format = """
-[](fg:#2ecc71)\
-[ ](fg:white bg:#2ecc71)\
+[](fg:#41a6b5)\
 $hostname\
 $username\
-[](fg:#2ecc71 bg:#3498db )\
+[](fg:#41a6b5 bg:#3e68d7 )\
 $directory\
-[](fg:#3498db bg:#f1c40f)\
+[](fg:#3e68d7 bg:#ff966c)\
 $git_branch\
-$git_status\
-[](fg:#f1c40f bg:#1abc9c)\
-$c\
-$elixir\
-$elm\
-$golang\
-$haskell\
-$java\
-$julia\
-$nodejs\
-$nim\
-$rust\
-$scala\
-[ ](fg:#1abc9c)\
+[ ](fg:#ff966c)\
 """
+# $git_status\
 
 # Disable the blank line at the start of the prompt
 # add_newline = false
 [hostname]
-style = "bg:#2ecc71"
+style = "bg:#41a6b5"
 ssh_only = true
 ssh_symbol = '󰴽'
 format= '[$hostname $ssh_symbol ]($style)'
@@ -35,12 +91,12 @@ format= '[$hostname $ssh_symbol ]($style)'
 # You can also replace your username with a neat symbol like  to save some space
 [username]
 show_always = true
-style_user = "bg:#2ecc71"
-style_root = "bg:#6c71c4"
-format = '[$user ]($style)'
+style_user = "bg:#41a6b5 fg:#c8d3f5"
+style_root = "bg:#c53b53 fg:#c8d3f5"
+format = '[ 󰯙 $user ]($style)'
 
 [directory]
-style = "bg:#3498db"
+style = "bg:#3e68d7"
 format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
@@ -60,65 +116,10 @@ truncation_symbol = "…/"
 
 [git_branch]
 symbol = ""
-style = "bg:#f1c40f"
+style = "bg:#ff966c"
 format = '[ $symbol $branch ]($style)'
 
 [git_status]
-style = "bg:#f1c40f"
+style = "bg:#ff966c"
 format = '[$all_status$ahead_behind ]($style)'
 
-
-[c]
-symbol = " "
-style = "bg:#1abc9c"
-format = '[ $symbol ($version) ]($style)'
-
-[elixir]
-symbol = " "
-style = "bg:#1abc9c"
-format = '[ $symbol ($version) ]($style)'
-
-[elm]
-symbol = " "
-style = "bg:#1abc9c"
-format = '[ $symbol ($version) ]($style)'
-
-[golang]
-symbol = " "
-style = "bg:#1abc9c"
-format = '[ $symbol ($version) ]($style)'
-
-[haskell]
-symbol = " "
-style = "bg:#1abc9c"
-format = '[ $symbol ($version) ]($style)'
-
-[java]
-symbol = " "
-style = "bg:#1abc9c"
-format = '[ $symbol ($version) ]($style)'
-
-[julia]
-symbol = " "
-style = "bg:#1abc9c"
-format = '[ $symbol ($version) ]($style)'
-
-[nodejs]
-symbol = ""
-style = "bg:#1abc9c"
-format = '[ $symbol ($version) ]($style)'
-
-[nim]
-symbol = " "
-style = "bg:#1abc9c"
-format = '[ $symbol ($version) ]($style)'
-
-[rust]
-symbol = ""
-style = "bg:#1abc9c"
-format = '[ $symbol ($version) ]($style)'
-
-[scala]
-symbol = " "
-style = "bg:#1abc9c"
-format = '[ $symbol ($version) ]($style)'

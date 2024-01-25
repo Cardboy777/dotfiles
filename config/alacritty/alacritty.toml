@@ -13,4 +13,4 @@ decorations = "None"
 padding = { x = 8, y = 0 }
 
 [font]
-normal = { family = "Commit Mono Nerd Font Mono", style= "Bold" }
+normal = { family = "Commit Mono Nerd Font", style= "Bold" }
