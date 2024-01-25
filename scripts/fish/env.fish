@@ -8,6 +8,7 @@ export PATH="$PATH:$PNPM_HOME"
 # dotnet tools
 export DOTNETTOOL_HOME="$HOME/.dotnet/tools"
 export PATH="$PATH:$DOTNETTOOL_HOME"
+export ASPNETCORE_ENVIRONMENT=Development
 # dotnet tools end
 
 
