@@ -1,0 +1,21 @@
+[user]
+	name = Cardboy777
+	email = 22593559+Cardboy777@users.noreply.github.com
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+[init]
+	defaultBranch = main
+[difftool]
+	prompt = false
+[credential]
+	credentialStore = secretservice
+	helper = /usr/lib/git-core/git-credential-libsecret
+[core]
+	editor = nvim
+[push]
+	autoSetupRemote = true
+[pull]
+	rebase = false
