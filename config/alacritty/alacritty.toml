@@ -1,6 +1,6 @@
 shell = "/bin/fish"
 import = [
-  "~/Repositories/dotfiles/config/alacritty/catppuccin-mocha.toml"
+  "~/Repositories/dotfiles/config/alacritty/tokyonight_moon.toml"
 ]
 
 [env]
