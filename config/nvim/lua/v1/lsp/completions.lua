@@ -7,7 +7,28 @@ luasnip.config.setup({})
 
 local lspkind = require('lspkind')
 
+local function forwardTab(fallback)
+  if cmp.visible() then
+    cmp.select_next_item()
+  elseif luasnip.expand_or_locally_jumpable() then
+    luasnip.expand_or_jump()
+  else
+    fallback()
+  end
+end
+
+local function backwardTab(fallback)
+  if cmp.visible() then
+    cmp.select_prev_item()
+  elseif luasnip.jumpable(-1) then
+    luasnip.jump(-1)
+  else
+    fallback()
+  end
+end
+
 cmp.setup({
+  preselect = cmp.PreselectMode.None,
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
@@ -23,27 +44,10 @@ cmp.setup({
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete({}),
     ['<CR>'] = cmp.mapping.confirm({
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
+      behavior = cmp.ConfirmBehavior.Insert,
     }),
-    ['<Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif luasnip.expand_or_locally_jumpable() then
-        luasnip.expand_or_jump()
-      else
-        fallback()
-      end
-    end, { 'i', 's' }),
-    ['<S-Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif luasnip.locally_jumpable(-1) then
-        luasnip.jump(-1)
-      else
-        fallback()
-      end
-    end, { 'i', 's' }),
+    ['<Tab>'] = cmp.mapping(forwardTab, { 'i', 's' }),
+    ['<S-Tab>'] = cmp.mapping(backwardTab, { 'i', 's' }),
   }),
   sources = {
     { name = 'nvim_lsp' },
@@ -54,7 +58,7 @@ cmp.setup({
   formatting = {
     format = lspkind.cmp_format({
       mode = 'symbol',
-      maxwidth = 50,
+      maxwidth = 80,
       ellipsis_char = '...',
     }),
   },
