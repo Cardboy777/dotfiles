@@ -2,7 +2,7 @@
 
 alias npm=pnpm
 
-alias ls=exa
+alias ls=eza
 
 alias firefox=brave
 
