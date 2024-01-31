@@ -47,7 +47,7 @@ local on_attach = function(_, bufnr)
 
   nmap('tq', function()
     require('trouble').toggle('workspace_diagnostics')
-  end, { desc = 'Open diagnostics list' })
+  end, 'Open diagnostics list')
 
   nmap('<leader>q', require('trouble').toggle, '[T]rouble [Q]uit')
 
@@ -150,6 +150,7 @@ require('mason-tool-installer').setup({
   -- start
   ensure_installed = {
     'bash-language-server',
+    'cshapier',
     'editorconfig-checker',
     'eslint_d',
     'gofumpt',
