@@ -150,7 +150,6 @@ require('mason-tool-installer').setup({
   -- start
   ensure_installed = {
     'bash-language-server',
-    'cshapier',
     'editorconfig-checker',
     'eslint_d',
     'gofumpt',
