@@ -3,6 +3,7 @@ recentrepos:
 - /mnt/ssd1/home/reid/Repositories/dotfiles
 - /mnt/ssd1/home/reid/Repositories/Shipwright
 startuppopupversion: 5
-customcommandshistory: []
+customcommandshistory:
+- q
 hidecommandlog: false
 ignorewhitespaceindiffview: false
