@@ -1,0 +1,163 @@
+{
+    "layer": "top", // Waybar at top layer
+    "position": "bottom", // Waybar position (top|bottom|left|right)
+    "height": 16, // Waybar height (to be removed for auto height)
+    // "width": 1280, // Waybar width
+    "spacing": 0, // Gaps between modules (4px)
+	"margin": "0 4 4", // Floating
+    // Choose the order of the modules
+    "modules-left": [
+        "wlr/taskbar",
+	],
+    "modules-center": [
+        "custom/mic-volume",
+		"hyprland/workspaces",
+		"keyboard-state",
+	],
+    "modules-right": [
+        "cpu",
+        "memory",
+        "temperature",
+        "wireplumber",
+        "bluetooth",
+        "network",
+        "tray",
+        "clock"
+	],
+    // Modules configuration
+    "wlr/taskbar": {
+        "all-outputs": true,
+        "format": "{icon}",
+        "icon-size": 20,
+        "icon-theme": "Papirus",
+        "tooltip-format": "{title}",
+        "on-click": "activate",
+        "ignore-list": [
+            "xwaylandvideobridge"
+        ]
+        // "on-click-middle": "close",
+    },
+    "hyprland/submap": {
+        "format": "✌️ {}",
+        "max-length": 8,
+        "tooltip": true
+    },
+    "hyperland/window": {
+        "format": "👉 {}",
+        "separate-outputs": true
+    },
+	"hyprland/workspaces": {
+		"all-outputs": true,
+		"format-window-separator": "\n",
+	},
+    "custom/mediaplayer": {
+        "format": "{icon} {}",
+        "return-type": "json",
+        // "max-length": 40,
+        "format-icons": {
+            "spotify": "",
+            "default": "🎜"
+        },
+        "escape": true,
+        "exec": "python $HOME/.config/waybar/custom_modules/mediaplayer.py 2> /dev/null" // Script in resources folder
+        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+    },
+    "keyboard-state": {
+        "numlock": false,
+        "capslock": true,
+        "format": "{name} {icon}",
+        "format-icons": {
+            "locked": "",
+            "unlocked": ""
+        }
+    },
+    "hypr/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+    "bluetooth": {
+        "on-click": "blueman-manager",
+        "format": " {status}",
+        "format-connected": " {device_alias}",
+        "format-connected-battery": " {device_alias} {device_battery_percentage}%",
+        // "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
+        "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+        "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
+    },
+    "tray": {
+        "icon-size": 20,
+        "spacing": 8
+    },
+    "clock": {
+        // "timezone": "America/New_York",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><big>{calendar}</big></tt>",
+        "format": "{:%I:%M %p}",
+        "format-alt": "{:%I:%M %p\n%m/%d/%Y}"
+    },
+    "cpu": {
+        "format": "{usage}% ",
+        "tooltip": false
+    },
+    "memory": {
+        "format": "{}% "
+    },
+    "temperature": {
+        // "thermal-zone": 2,
+        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "critical-threshold": 80,
+        // "format-critical": "{temperatureC}°C {icon}",
+        "format": "{temperatureC}°C {icon}",
+        "format-icons": [
+            "",
+            "",
+            ""
+        ]
+    },
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "Connected 🖵",
+        "tooltip-format": "{ifname} via {gwaddr}\n{bandwidthUpBytes} Up\t{bandwidthDownBytes} Down",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+        // "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+    "wireplumber": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% {icon}",
+        "format-bluetooth-muted": " {icon}",
+        "format-muted": " {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": [
+                "",
+                "",
+                ""
+            ]
+        },
+        "on-click": "pavucontrol",
+        "on-click-right": "helvum",
+        "on-click-middle": "easyeffects"
+    },
+    "custom/mic-volume": {
+        "exec": "$HOME/.config/waybar/scripts/getMicState.sh",
+        "return-type": "json",
+        "interval": "once",
+        "signal": 8,
+        "format": "{icon}",
+        "tooltip": false,
+        "format-icons": {
+            "muted": "&#xf131;",
+            "unmuted": "&#xf130;"
+        }
+    }
+}
