@@ -1,11 +1,8 @@
-if status is-interactive
-    # Commands to run in interactive sessions can go here
-end
+set -U fish_greeting
 
-# Setup custom environment
-if test -e ~/Repositories/dotfiles/scripts/fish/shell-init.fish
-  source ~/Repositories/dotfiles/scripts/fish/shell-init.fish
-end
-
+# Init bash scripts
+set -l CONFIG_DIR $HOME/Repositories/dotfiles/config/fish
+bass source $CONFIG_DIR/bash.d/aliases.sh
+bass source $CONFIG_DIR/bash.d/env.sh
 
 starship init fish | source
