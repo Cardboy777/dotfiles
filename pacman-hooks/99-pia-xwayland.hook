@@ -1,0 +1,11 @@
+[Trigger]
+Operation=Upgrade
+Type=Package
+Target=piavpn
+
+[Action]
+Description=Patch PIA desktop file to Launch in XWayland
+When=PostTransaction
+Exec=/usr/bin/sudo /usr/bin/sed -i 's,Exec=/opt/piavpn/bin/pia-client %u,Exec=env QT_QPA_PLATFORM=xcb /opt/piavpn/bin/pia-client %u,' '/usr/share/applications/piavpn.desktop'
+Depends=sed
+
