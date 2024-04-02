@@ -1,5 +1,11 @@
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
+
+-- Disable treesitter for certain languages at certain file sizes to prevent massive lagging
+local function disable(lang, bufnr)
+  return (lang == 'cpp' or lang == 'c') and vim.api.nvim_buf_line_count(bufnr) > 8000
+end
+
 -- Defer Treesitter setup after first render to improve startup time of 'nvim {filename}'
 vim.defer_fn(function()
   require('nvim-treesitter.configs').setup({
@@ -9,7 +15,10 @@ vim.defer_fn(function()
     -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
     auto_install = true,
 
-    highlight = { enable = true },
+    highlight = {
+      enable = true,
+      disable = disable,
+    },
     indent = { enable = true },
     incremental_selection = {
       enable = true,
@@ -66,7 +75,7 @@ vim.defer_fn(function()
     },
     refactor = {
       highlight_definitions = {
-        enable = true,
+        enable = false,
         clear_on_cursor_move = true,
       },
       highlight_current_scope = { enable = false },
