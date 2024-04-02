@@ -1,4 +1,6 @@
 #!/bin/bash
+export TERMINAL=alacritty
+export EDITOR=nvim
 
 # pnpm
 export PNPM_HOME="$HOME/.local/share/pnpm"
