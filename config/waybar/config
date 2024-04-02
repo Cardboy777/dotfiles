@@ -33,7 +33,8 @@
         "tooltip-format": "{title}",
         "on-click": "activate",
         "ignore-list": [
-            "xwaylandvideobridge"
+            "xwaylandvideobridge",
+			"Wayland to X Recording bridge — Xwayland Video Bridge",
         ]
         // "on-click-middle": "close",
     },
