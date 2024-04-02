@@ -17,7 +17,6 @@ return {
       -- vim = {'vint'},
       yaml = { 'yamllint' },
       json = { 'jsonlint' },
-      html = { 'tidy' },
       css = { 'stylelint' },
       markdown = { 'markdownlint' },
       -- haskell = {'hlint'},
