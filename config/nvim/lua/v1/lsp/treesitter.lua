@@ -80,7 +80,10 @@ vim.defer_fn(function()
       },
       highlight_current_scope = { enable = false },
       smart_rename = {
-        enable = false,
+        enable = true,
+        keymaps = {
+          smart_rename = 'grr',
+        },
       },
       navigation = {
         enable = true,
