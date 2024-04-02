@@ -45,9 +45,13 @@ local on_attach = function(_, bufnr)
     require('trouble').toggle('quickfix')
   end, '[T]oggle [Q]uickfix')
 
-  nmap('tq', function()
+  nmap('twq', function()
     require('trouble').toggle('workspace_diagnostics')
-  end, 'Open diagnostics list')
+  end, 'Open workspace diagnostics list')
+
+  nmap('tq', function()
+    require('trouble').toggle('document_diagnostics')
+  end, 'Open document diagnostics list')
 
   nmap('<leader>q', require('trouble').toggle, '[T]rouble [Q]uit')
 
