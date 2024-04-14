@@ -6,7 +6,7 @@ import { ClientTitle } from "./widgets/clientTitle.js";
 import { SystemTray } from "./widgets/systemTray.js";
 // import { BatteryLabel } from "./widgets/batteryLabel.js";
 import { Clock } from "./widgets/clock.js";
-import { Notifications } from "./widgets/notifications.js";
+// import { Notifications } from "./widgets/notifications.js";
 import { Calendar } from "./widgets/calendar.js";
 
 // layout of the bar
@@ -34,7 +34,7 @@ function Right(monitor = 0) {
       SystemTray(),
       // BatteryLabel(),
       Clock(monitor),
-      Notifications(),
+      // Notifications(),
       Widget.Separator(),
     ],
   });
