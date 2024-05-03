@@ -9,7 +9,6 @@ const MICROPHONE_NAME_MATCHERS = ["Focusrite_Scarlett_2i2", "0__source"];
 
 export function MicrophoneMute() {
   const isMuted = Utils.watch(null, audio, "changed", () => {
-    console.log(audio.microphones.map(({ name }) => name));
     const microphone = audio.microphones.find((mic) =>
       MICROPHONE_NAME_MATCHERS.every((match) => mic.name?.includes(match)),
     );
