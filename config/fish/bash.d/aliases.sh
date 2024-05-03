@@ -10,6 +10,8 @@ alias ls=eza
 
 alias firefox=brave
 
+alias neofetch=fastfetch
+
 # tmux
 alias tl='tmux ls'
 alias ta='tmux a -t'

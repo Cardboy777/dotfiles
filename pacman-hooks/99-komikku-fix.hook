@@ -6,6 +6,6 @@ Target=komikku
 [Action]
 Description=Patch Komikku connection condition to allow for 'LIMITED' VPN connections
 When=PostTransaction
-Exec=/usr/bin/sudo /usr/bin/sed -i 's/Gio.NetworkConnectivity.FULL/Gio.NetworkConnectivity.FULL or Gio.NetworkConnectivity.LIMITED/' '/usr/lib/python3.11/site-packages/komikku/application.py'
+Exec=/usr/bin/sudo /usr/bin/sed -i 's/Gio.NetworkConnectivity.FULL/Gio.NetworkConnectivity.FULL or Gio.NetworkConnectivity.LIMITED/' '/usr/lib/python3.12/site-packages/komikku/application.py'
 Depends=sed
 

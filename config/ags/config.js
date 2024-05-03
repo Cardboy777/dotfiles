@@ -8,6 +8,7 @@ import { SystemTray } from "./widgets/systemTray.js";
 import { Clock } from "./widgets/clock.js";
 // import { Notifications } from "./widgets/notifications.js";
 import { Calendar } from "./widgets/calendar.js";
+import { NotificationPopups } from "./widgets/notificationPopup.js";
 
 // layout of the bar
 function Left() {
@@ -34,7 +35,6 @@ function Right(monitor = 0) {
       SystemTray(),
       // BatteryLabel(),
       Clock(monitor),
-      // Notifications(),
       Widget.Separator(),
     ],
   });
@@ -75,5 +75,8 @@ const monitors = [0, 1, 2];
 
 App.config({
   style: "./style.css",
-  windows: monitors.map((m) => Windows(m)).flat(),
+  windows: monitors
+    .map((m) => Windows(m))
+    .flat()
+    .concat([NotificationPopups()]),
 });
