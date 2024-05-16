@@ -5,4 +5,8 @@ set -l CONFIG_DIR $HOME/Repositories/dotfiles/config/fish
 bass source $CONFIG_DIR/bash.d/aliases.sh
 bass source $CONFIG_DIR/bash.d/env.sh
 
+if type -q fastfetch
+    fastfetch
+end
+
 starship init fish | source
