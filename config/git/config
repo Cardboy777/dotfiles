@@ -12,7 +12,7 @@
 	prompt = false
 [credential]
 	credentialStore = secretservice
-	helper = git-credential-libsecret
+	helper = /usr/lib/git-core/git-credential-libsecret
 [core]
 	editor = nvim
 [push]
