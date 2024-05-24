@@ -18,7 +18,7 @@ return {
       yaml = { 'yamllint' },
       json = { 'jsonlint' },
       css = { 'stylelint' },
-      markdown = { 'markdownlint' },
+      -- markdown = { 'markdownlint' },
       -- haskell = {'hlint'},
       -- php = {'phpcs'},
       -- java = {'checkstyle'},
