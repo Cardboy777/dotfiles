@@ -15,6 +15,7 @@ return {
         css = { { 'prettierd', 'prettier' } },
         json = { { 'prettierd', 'prettier' } },
         vue = { { 'prettierd', 'prettier' } },
+        html = { { 'prettierd', 'prettier' } },
         c_sharp = { 'csharpier' },
         -- c = { 'clang_format' },
         -- cpp = { 'clang_format' },

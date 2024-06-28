@@ -50,7 +50,7 @@ local on_attach = function(_, bufnr)
   end, 'Open workspace diagnostics list')
 
   nmap('tq', function()
-    require('trouble').toggle('document_diagnostics')
+    require('trouble').toggle('diagnostics')
   end, 'Open document diagnostics list')
 
   nmap('<leader>q', require('trouble').toggle, '[T]rouble [Q]uit')
@@ -122,10 +122,19 @@ local servers = {
   omnisharp = {},
   pylsp = {},
   rust_analyzer = {},
-  tsserver = {},
-  volar = {
-    filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' },
+  tsserver = {
+    init_options = {
+      plugins = {
+        {
+          name = '@vue/typescript-plugin',
+          location = require('mason-registry').get_package('vue-language-server'):get_install_path(),
+          languages = { 'vue' },
+        },
+      },
+    },
+    filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
   },
+  volar = {},
 }
 
 -- Setup neovim lua configuration
