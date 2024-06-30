@@ -23,4 +23,3 @@ shortcut() {
     destination=$2
     ln -S -T "$target" "$destination"
 }
-

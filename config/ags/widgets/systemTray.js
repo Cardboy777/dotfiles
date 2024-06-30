@@ -1,5 +1,6 @@
 import { settings } from "../settings.js";
 import { MicrophoneMute } from "./microphoneMute.js";
+import { ScreenRecorder } from "./screenReplay.js";
 import { VolumeSettings } from "./volumeSettings.js";
 
 const systemtray = await Service.import("systemtray");
@@ -44,14 +45,16 @@ export function SystemTray() {
       onSecondaryClick: (_, event) => item.openMenu(event),
     });
 
-  const extra = [VolumeSettings(), MicrophoneMute()];
+  const extraBefore = [ScreenRecorder()];
+  const extraAfter = [VolumeSettings(), MicrophoneMute()];
 
   return Widget.Box({
     children: systemtray
       .bind("items")
       .as((i) => [
+        ...extraBefore,
         ...i.filter(showTrayItem).sort(sortItems).map(SysTrayItem),
-        ...extra,
+        ...extraAfter,
       ]),
     class_name: "system-tray",
   });
