@@ -1,5 +1,5 @@
 window.bar {
-  background-color: @shade_color;
+  background-color: alpha(@theme_bg_color, 0.4);
   color: @theme_fg_color;
 }
 
