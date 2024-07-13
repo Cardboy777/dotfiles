@@ -11,7 +11,7 @@ vim.keymap.set('v', 'd', '"_d', { desc = 'Delete Selected Text' })
 vim.keymap.set('n', 'c', 'dd', { desc = 'Cut line' })
 vim.keymap.set('v', 'c', 'd', { desc = 'Cut Selected Text' })
 -- Make paste in visual mode not overwrite clipboard
-vim.keymap.set('v', 'p', '"_dp', { desc = 'Paste Selected Text' })
+vim.keymap.set('v', 'p', '"_dP', { desc = 'Paste Selected Text' })
 
 vim.keymap.set('v', '<tab>', '>', { desc = 'Cut Selected Text' })
 vim.keymap.set('v', '<S-tab>', '<', { desc = 'Cut Selected Text' })

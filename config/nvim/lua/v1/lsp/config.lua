@@ -94,49 +94,6 @@ require('which-key').register({
 require('mason').setup()
 require('mason-lspconfig').setup()
 
--- Enable the following language servers
---  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
---
---  Add any additional override configuration in the following tables. They will be passed to
---  the `settings` field of the server config. You must look up that documentation yourself.
---
---  If you want to override the default filetypes that your language server will attach to you can
---  define the property 'filetypes' to the map in question.
-local servers = {
-  bashls = {},
-  bicep = {},
-  clangd = {},
-  csharp_ls = {},
-  cssls = {},
-  gopls = {
-    gofumpt = true,
-  },
-  html = { filetypes = { 'html', 'twig', 'hbs' } },
-  jsonls = {},
-  lua_ls = {
-    Lua = {
-      workspace = { checkThirdParty = false },
-      telemetry = { enable = false },
-    },
-  },
-  omnisharp = {},
-  pylsp = {},
-  rust_analyzer = {},
-  tsserver = {
-    init_options = {
-      plugins = {
-        {
-          name = '@vue/typescript-plugin',
-          location = require('mason-registry').get_package('vue-language-server'):get_install_path(),
-          languages = { 'vue' },
-        },
-      },
-    },
-    filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
-  },
-  volar = {},
-}
-
 -- Setup neovim lua configuration
 require('neodev').setup()
 
@@ -148,17 +105,34 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 local mason_lspconfig = require('mason-lspconfig')
 
 mason_lspconfig.setup({
-  ensure_installed = vim.tbl_keys(servers),
+  ensure_installed = {
+    'bashls',
+    'bicep',
+    'csharp_ls',
+    'cssls',
+    'html',
+    'jsonls',
+    'lua_ls',
+    'omnisharp',
+    'pylsp',
+    'tsserver',
+    'volar',
+  },
 })
 
 mason_lspconfig.setup_handlers({
   function(server_name)
-    require('lspconfig')[server_name].setup({
+    local server_options = {
       capabilities = capabilities,
       on_attach = on_attach,
-      settings = servers[server_name],
-      filetypes = (servers[server_name] or {}).filetypes,
-    })
+    }
+
+    local require_ok, server_config = pcall(require, 'plugins.lsp.settings.' .. server_name)
+    if require_ok then
+      server_options = vim.tbl_deep_extend('force', server_config, server_options)
+    end
+
+    require('lspconfig')[server_name].setup(server_options)
   end,
 })
 
