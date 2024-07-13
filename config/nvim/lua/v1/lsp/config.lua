@@ -117,7 +117,8 @@ mason_lspconfig.setup({
     'omnisharp',
     'pylsp',
     'tsserver',
-    'volar',
+    -- 'volar',
+    'vuels',
   },
 })
 
