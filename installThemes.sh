@@ -10,7 +10,7 @@ git clone https://github.com/Fausto-Korpsvart/Tokyonight-GTK-Theme.git $INSTALL_
 
 chmod +x $INSTALL_DIR/themes/install.sh
 
-$INSTALL_DIR/themes/install.sh -s dark -l --tweaks moon float
+$INSTALL_DIR/themes/install.sh -c dark -l --tweaks moon float
 
 sudo flatpak override --filesystem="$HOME/.themes"
 sudo flatpak override --filesystem="$HOME/.icons"
