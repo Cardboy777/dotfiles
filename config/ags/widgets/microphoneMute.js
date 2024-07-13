@@ -5,12 +5,15 @@ const mutedIcon = "microphone-sensitivity-muted";
 const unmutedIcon = "microphone-sensitivity-high";
 const errorIcon = "dialog-error";
 
-const MICROPHONE_NAME_MATCHERS = ["Focusrite_Scarlett_2i2", "0__source"];
+const MICROPHONE_NAME_MATCHERS = ["Focusrite_Scarlett_2i2", "Mic1__source"];
 
 export function MicrophoneMute() {
   const isMuted = Utils.watch(null, audio, "changed", () => {
+    console.warn(audio.microphones);
     const microphone = audio.microphones.find((mic) =>
-      MICROPHONE_NAME_MATCHERS.every((match) => mic.name?.includes(match)),
+      MICROPHONE_NAME_MATCHERS.every((match) =>
+        mic.stream?.name?.includes(match),
+      ),
     );
     return microphone?.stream?.is_muted;
   });
@@ -21,11 +24,19 @@ export function MicrophoneMute() {
       return errorIcon;
     }
 
-    return muted ? mutedIcon : unmutedIcon;
+    switch (muted) {
+      case true:
+        return mutedIcon;
+      case false:
+        return unmutedIcon;
+      case null:
+      case undefined:
+        return errorIcon;
+    }
   });
 
   const class_name = isMuted.as((muted) => {
-    if (muted === null) {
+    if (muted === null || muted === undefined) {
       return "microphone-mute error";
     }
     return `microphone-mute ${muted ? "muted" : "unmuted"}`;
