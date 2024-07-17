@@ -128,9 +128,10 @@ mason_lspconfig.setup_handlers({
       on_attach = on_attach,
     }
 
-    local require_ok, server_config = pcall(require, 'plugins.lsp.settings.' .. server_name)
+    local require_ok, server_config = pcall(require, 'v1/lsp/server_configurations/' .. server_name)
+
     if require_ok then
-      server_options = vim.tbl_deep_extend('force', server_config, server_options)
+      server_options = vim.tbl_deep_extend('force', server_options, server_config)
     end
 
     require('lspconfig')[server_name].setup(server_options)
