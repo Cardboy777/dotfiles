@@ -108,6 +108,7 @@ mason_lspconfig.setup({
   ensure_installed = {
     'bashls',
     'bicep',
+    'clangd',
     'csharp_ls',
     'cssls',
     'html',
