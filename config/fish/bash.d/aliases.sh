@@ -15,8 +15,8 @@ alias neofetch=fastfetch
 # tmux
 alias tl='tmux ls'
 alias ta='tmux a -t'
-alias tk='tmux kill-session -t'
-alias ts='bash ~/.config/fish/bash.d/tmux-sessionizer.sh'
+alias tk='~/.config/fish/bash.d/scripts/tmux-kill.sh'
+alias ts='~/.config/fish/bash.d/scripts/tmux-sessionizer.sh'
 
 shortcut() {
     target=$1
