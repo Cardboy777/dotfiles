@@ -79,14 +79,14 @@ local on_attach = function(_, bufnr)
 end
 
 -- document existing key chains
-require('which-key').register({
-  ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
-  ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
-  ['<leader>g'] = { name = '[G]it', _ = 'which_key_ignore' },
-  ['<leader>h'] = { name = 'More git', _ = 'which_key_ignore' },
-  ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
-  ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
-  ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
+require('which-key').add({
+  { '<leader>c', name = 'Code' },
+  { '<leader>d', name = 'Document' },
+  { '<leader>g', name = 'Git' },
+  { '<leader>h', name = 'More git' },
+  { '<leader>r', name = 'Rename' },
+  { '<leader>s', name = 'Search' },
+  { '<leader>w', name = 'Workspace' },
 })
 
 -- mason-lspconfig requires that these setup functions are called in this order
@@ -106,18 +106,31 @@ local mason_lspconfig = require('mason-lspconfig')
 
 mason_lspconfig.setup({
   ensure_installed = {
+    'autotools_ls',
+    'azure_pipelines_ls',
     'bashls',
     'bicep',
     'clangd',
     'csharp_ls',
     'cssls',
+    'css_variables',
+    'dockerls',
+    'harper_ls',
     'html',
+    -- 'hyprls', -- disabled until mason supports it
+    'jqls',
     'jsonls',
     'lua_ls',
+    'marksman',
+    'neocmake',
+    -- 'nil_ls', -- nix os (requires nix exec to be installed)
     'omnisharp',
     'pylsp',
+    'tailwindcss',
+    'taplo',
     'tsserver',
     'volar',
+    'yamlls',
   },
 })
 
@@ -134,6 +147,11 @@ mason_lspconfig.setup_handlers({
       server_options = vim.tbl_deep_extend('force', server_options, server_config)
     end
 
+    -- if server_name == 'bashls' then
+    --   vim.print(require_ok)
+    --   vim.print(server_options)
+    -- end
+
     require('lspconfig')[server_name].setup(server_options)
   end,
 })
@@ -143,8 +161,6 @@ require('mason-tool-installer').setup({
   -- a list of all tools you want to ensure are installed upon
   -- start
   ensure_installed = {
-    'clangd',
-    'bash-language-server',
     'editorconfig-checker',
     'eslint_d',
     'gofumpt',
@@ -158,6 +174,7 @@ require('mason-tool-installer').setup({
     'sonarlint-language-server',
     'stylelint',
     'stylua',
+    'systemd-lint',
   },
 
   -- if set to true this will check each tool for updates. If updates
