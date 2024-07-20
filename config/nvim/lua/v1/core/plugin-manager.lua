@@ -69,6 +69,10 @@ require('lazy').setup({
   -- Useful plugin to show you pending keybinds.
   {
     'folke/which-key.nvim',
+    dependencies = {
+      { 'echasnovski/mini.nvim', version = false },
+      'nvim-web-devicons',
+    },
     opts = {},
   },
   {
@@ -143,12 +147,6 @@ require('lazy').setup({
     -- See `:help ibl`
     'lukas-reineke/indent-blankline.nvim',
     main = 'ibl',
-    opts = {},
-  },
-
-  -- "gc" to comment visual regions/lines
-  {
-    'numToStr/Comment.nvim',
     opts = {},
   },
 
