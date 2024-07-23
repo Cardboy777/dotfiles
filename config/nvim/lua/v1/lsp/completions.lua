@@ -56,10 +56,19 @@ cmp.setup({
     { name = 'copilot', group_index = 2 },
   },
   formatting = {
+    expandable_indicator = true,
+    fields = { "kind", "abbr", "menu" },
     format = lspkind.cmp_format({
       mode = 'symbol',
       maxwidth = 80,
       ellipsis_char = '...',
     }),
+  },
+})
+
+-- add Copilot symbol to copilot-cmp suggestions
+require('lspkind').init({
+  symbol_map = {
+    Copilot = '',
   },
 })

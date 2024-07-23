@@ -10,12 +10,12 @@ return {
         -- Conform will run multiple formatters sequentially
         python = { 'isort', 'black' },
         -- Use a sub-list to run only the first available formatter
-        javascript = { { 'prettierd', 'prettier' } },
-        typescript = { { 'prettierd', 'prettier' } },
-        css = { { 'prettierd', 'prettier' } },
-        json = { { 'prettierd', 'prettier' } },
-        vue = { { 'prettierd', 'prettier' } },
-        html = { { 'prettierd', 'prettier' } },
+        javascript = { 'prettierd', 'prettier' },
+        typescript = { 'prettierd', 'prettier' },
+        css = { 'prettierd', 'prettier' },
+        json = { 'prettierd', 'prettier' },
+        vue = { 'prettierd', 'prettier' },
+        html = { 'prettierd', 'prettier' },
         c_sharp = { 'csharpier' },
         -- c = { 'clang_format' },
         -- cpp = { 'clang_format' },
@@ -27,7 +27,7 @@ return {
       pattern = '*',
       callback = function(args)
         if FormatOnSave then
-          require('conform').format({ bufnr = args.buf, lsp_fallback = true })
+          require('conform').format({ bufnr = args.buf, lsp_format = 'prefer' })
         end
       end,
     })
