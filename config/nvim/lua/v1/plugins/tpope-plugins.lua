@@ -6,11 +6,16 @@ return {
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
   'tpope/vim-eunuch',
-  'tpope/vim-vinegar',
+  {
+    'tpope/vim-vinegar',
+    config = function()
+      vim.g.netrw_list_hide = '^\\./$'
+    end,
+  },
   {
     'kristijanhusak/vim-dadbod-ui',
     dependencies = {
-      { 'tpope/vim-dadbod', lazy = true },
+      { 'tpope/vim-dadbod',                     lazy = true },
       { 'kristijanhusak/vim-dadbod-completion', ft = { 'sql', 'mysql', 'plsql' }, lazy = true }, -- Optional
     },
     cmd = {
@@ -19,7 +24,7 @@ return {
       'DBUIAddConnection',
       'DBUIFindBuffer',
     },
-    init = function()
+    comfig = function()
       -- Your DBUI configuration
       vim.g.db_ui_use_nerd_fonts = 1
     end,
