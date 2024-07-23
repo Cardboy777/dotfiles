@@ -13,10 +13,10 @@ return {
       },
       lualine_bold = true,
       on_colors = function()
-        --do nothing
+        -- Do nothing
       end,
       on_highlights = function()
-        --do nothign
+        -- Do nothing
       end,
     })
     vim.cmd([[colorscheme tokyonight-moon]])
