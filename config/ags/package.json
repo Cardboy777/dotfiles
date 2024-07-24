@@ -1,0 +1,15 @@
+{
+  "name": "c777-ags",
+  "type": "module",
+  "module": "config",
+  "scripts": {
+    "build": "bun build ./src/config.js --outdir=./",
+    "watch": "bun build ./src/config.js --outdir=./ --watch"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}

@@ -43,8 +43,7 @@ label {
   padding: 6px 4px;
 }
 
-.microphone-mute.muted {
-}
+.microphone-mute.muted {}
 
 levelbar block,
 highlight {
