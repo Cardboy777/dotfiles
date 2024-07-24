@@ -10,6 +10,8 @@ import { Clock } from "./widgets/clock.js";
 import { Calendar } from "./widgets/calendar.js";
 import { NotificationPopups } from "./widgets/notificationPopup.js";
 
+import styles from "./style.css";
+
 // layout of the bar
 function Left() {
   return Widget.Box({
@@ -74,7 +76,7 @@ function Windows(monitor = 0) {
 const monitors = [0, 1, 2];
 
 App.config({
-  style: "./style.css",
+  style: styles,
   windows: monitors
     .map((m) => Windows(m))
     .flat()
