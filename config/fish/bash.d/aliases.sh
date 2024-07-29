@@ -7,6 +7,7 @@ alias vim=nvim
 alias htop=btop
 
 alias ls=eza
+alias cat=bat
 
 alias firefox=brave
 

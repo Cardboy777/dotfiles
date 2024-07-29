@@ -1,7 +1,5 @@
 #!/bin/bash
 
-paru -S gtk-engine-murrine sassc papirus-icon-theme bibata-cursor-git lxappearance nwg-look qt6gtk2 qt5-styleplugins qt5ct qt6ct
-
 INSTALL_DIR=~/Repositories/Tokyonight-GTK-Theme
 
 mkdir -p $INSTALL_DIR
