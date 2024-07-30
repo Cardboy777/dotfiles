@@ -6,12 +6,12 @@ fastfetch
 fish
 fisher
 flatpak
+gnome-keyring
 paru
 starship
-yazi
-which
-unzip
-winetricks
 ueberzugpp
+unzip
+which
+winetricks
 wireplumber
-gnome-keyring
+yazi
