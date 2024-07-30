@@ -2,6 +2,9 @@
 export TERMINAL=alacritty
 export EDITOR=nvim
 
+#mason bin
+export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
+
 # pnpm
 export PNPM_HOME="$HOME/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"

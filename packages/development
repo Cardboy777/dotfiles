@@ -11,3 +11,5 @@ lazygit
 stow
 go
 rustup
+dotnet-sdk
+luarocks

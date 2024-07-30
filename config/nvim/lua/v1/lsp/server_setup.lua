@@ -121,15 +121,19 @@ mason_lspconfig.setup_handlers({
       on_attach = on_attach,
     }
 
-    local require_ok, server_config = pcall(require, 'v1/lsp/server_configurations/' .. server_name)
+    local server_config_path = 'v1/lsp/server_configurations/' .. server_name
+
+    local require_ok, server_config = pcall(require, server_config_path)
 
     if require_ok then
       server_options = vim.tbl_deep_extend('force', server_options, server_config)
     end
 
     -- if server_name == 'bashls' then
-    --   vim.print(require_ok)
+    --   vim.print('=====' .. server_name .. '=====')
+    --   vim.print((require_ok and 'true' or 'false') .. ': ' .. server_config_path)
     --   vim.print(server_options)
+    --   vim.print('===============================')
     -- end
 
     require('lspconfig')[server_name].setup(server_options)
@@ -141,6 +145,7 @@ require('mason-tool-installer').setup({
   -- a list of all tools you want to ensure are installed upon
   -- start
   ensure_installed = {
+    'csharpier',
     'editorconfig-checker',
     'eslint_d',
     'gofumpt',
@@ -154,7 +159,7 @@ require('mason-tool-installer').setup({
     'sonarlint-language-server',
     'stylelint',
     'stylua',
-    'systemd-lint',
+    'systemdlint',
   },
 
   -- if set to true this will check each tool for updates. If updates
@@ -183,3 +188,26 @@ require('mason-tool-installer').setup({
   -- Default: nil
   debounce_hours = 5, -- at least 5 hours between attempts to install/update
 })
+
+for _, formatter in ipairs(require('conform').list_all_formatters()) do
+  local config = require('conform').formatters[formatter.name]
+  local config_path = 'v1/lsp/formatter_configurations/' .. formatter.name
+
+  local require_ok, formatter_config = pcall(require, config_path)
+
+  -- if true then
+  --   vim.print('=====' .. formatter.name .. '=====')
+  --   vim.print(config)
+  --   vim.print((require_ok and 'true' or 'false') .. ': ' .. config_path)
+  --   vim.print(formatter_config)
+  --   vim.print('===============================')
+  -- end
+
+  if require_ok then
+    if config ~= nil then
+      ---@diagnostic disable-next-line: param-type-mismatch
+      formatter_config = vim.tbl_deep_extend('force', config, formatter_config)
+    end
+    require('conform').formatters[formatter.name] = formatter_config
+  end
+end
