@@ -4,14 +4,14 @@ hyprland
 hyprpaper
 hyprshot
 imv
-sddm
+network-manager-applet
 pam_autologin
 polkit-gnome
 rofi
+sddm
 swappy
 waypaper
 wl-clipboard
 xdg-desktop-portal-gtk
 xdg-desktop-portal-hyprland
 xwaylandvideobridge
-network-manager-applet
