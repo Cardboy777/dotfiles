@@ -1,3 +1,3 @@
 #!/bin/bash
 
-cat ~/Repositories/dotfiles/packages/* | pacman -Syu -
+cat ~/Repositories/dotfiles/packages/* | sudo pacman -Syu -
