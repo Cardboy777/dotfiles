@@ -3,7 +3,7 @@ set --global sponge_version 1.1.0
 
 # Allow to repeat previous command by default
 if not set --query --universal sponge_delay
-  set --universal sponge_delay 2
+  set --universal sponge_delay 10
 end
 
 # Purge entries both after `sponge_delay` entries and on exit by default

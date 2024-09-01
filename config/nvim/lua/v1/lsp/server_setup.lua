@@ -95,14 +95,14 @@ mason_lspconfig.setup({
     'cssls',
     'css_variables',
     'dockerls',
-    'harper_ls',
+    -- 'harper_ls',
     'html',
     -- 'hyprls', -- disabled until mason supports it
     'jqls',
     'jsonls',
     'lua_ls',
     'marksman',
-    'neocmake',
+    -- 'neocmake',
     -- 'nil_ls', -- nix os (requires nix exec to be installed)
     'omnisharp',
     'pylsp',
