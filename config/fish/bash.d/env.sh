@@ -28,6 +28,10 @@ export PATH="$DOTNETTOOL_HOME:$PATH"
 export ASPNETCORE_ENVIRONMENT=Development
 #dotnet end
 
+# asdf
+export ASDF_CONFIG_FILE="$HOME/.config/asdf/.asdfrc"
+source /opt/asdf-vm/asdf.sh
+
 #Ship of Harikinian directory variable
 export SHIP_HOME="$HOME/Games/ShipOfHarkinian"
 
