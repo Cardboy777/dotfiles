@@ -67,6 +67,15 @@ local on_attach = function(_, bufnr)
     FormatOnSave = not FormatOnSave
     print('Format On Save: ' .. (FormatOnSave and 'On' or 'Off'))
   end, { desc = 'Toggle Format On Save On/Off' })
+
+  vim.api.nvim_buf_create_user_command(bufnr, 'ListLinters', function(_)
+    local linters = require('lint').get_running()
+    if #linters == 0 then
+      vim.print('󰦕')
+      return
+    end
+    vim.print('󱉶 ' .. table.concat(linters, ', '))
+  end, { desc = 'Lists running linters for current buffer' })
 end
 
 -- mason-lspconfig requires that these setup functions are called in this order
@@ -129,6 +138,7 @@ mason_lspconfig.setup_handlers({
       server_options = vim.tbl_deep_extend('force', server_options, server_config)
     end
 
+    -- vim.print(server_name)
     -- if server_name == 'bashls' then
     --   vim.print('=====' .. server_name .. '=====')
     --   vim.print((require_ok and 'true' or 'false') .. ': ' .. server_config_path)
