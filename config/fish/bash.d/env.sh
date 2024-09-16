@@ -14,7 +14,7 @@ export PATH="$PNPM_HOME:$PATH"
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 
-if command -v -- pyenv > /dev/null 2>&1; then
+if command -v -- pyenv >/dev/null 2>&1; then
     eval "$(pyenv init -)"
 fi
 # pyenv end
@@ -23,9 +23,10 @@ fi
 export PATH="$HOME/.local/bin:$PATH"
 
 #dotnet
-export DOTNETTOOL_HOME="$HOME/.dotnet/tools"
-export PATH="$DOTNETTOOL_HOME:$PATH"
-export ASPNETCORE_ENVIRONMENT=Development
+# export DOTNETTOOL_HOME="$HOME/.dotnet/tools"
+# export PATH="$DOTNETTOOL_HOME:$PATH"
+# export ASPNETCORE_ENVIRONMENT=Development
+export DOTNET_CLI_TELMETRY_OPTOUT=1
 #dotnet end
 
 # asdf
@@ -34,4 +35,3 @@ source /opt/asdf-vm/asdf.sh
 
 #Ship of Harikinian directory variable
 export SHIP_HOME="$HOME/Games/ShipOfHarkinian"
-
