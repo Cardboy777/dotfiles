@@ -1,0 +1,16 @@
+configuration {           
+	modes: "drun";
+    font: "mono 12";
+    fixed-num-lines: true;
+	show-icons: true;
+	steal-focus: true;
+	match: "fuzzy";
+	terminal: "alacritty";
+	drun-display-format: "{icon} {name}";
+
+	drun {
+		display-name: "Search";
+	}
+}
+@theme "tokyonight"
+
