@@ -1,11 +1,16 @@
 import { settings } from "../settings.js";
 import { MicrophoneMute } from "./microphoneMute.js";
+import { Auth } from "./authKey.js";
 import { ScreenRecorder } from "./screenReplay.js";
 import { VolumeSettings } from "./volumeSettings.js";
 
 const systemtray = await Service.import("systemtray");
 
-const blacklist = ["Xwayland Video Bridge", "Wallet Manager"];
+const blacklist = [
+  "Xwayland Video Bridge",
+  "Wallet Manager",
+  "Ente Auth", // Not working right now, the entry generates as a random string
+];
 const trayOrder = [
   "spotify-client",
   "chrome_status_icon_1", // webcord
@@ -27,7 +32,7 @@ const showTrayItem = (item) => {
       return false;
     }
   }
-  // console.log(item.id);
+  console.log(item.id);
   return true;
 };
 
@@ -45,7 +50,7 @@ export function SystemTray() {
       onSecondaryClick: (_, event) => item.openMenu(event),
     });
 
-  const extraBefore = [ScreenRecorder()];
+  const extraBefore = [ScreenRecorder(), Auth()];
   const extraAfter = [VolumeSettings(), MicrophoneMute()];
 
   return Widget.Box({
