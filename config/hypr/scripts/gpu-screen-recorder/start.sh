@@ -18,7 +18,7 @@ if ! pgrep -x "gpu-screen-reco" >/dev/null; then
     # For AGS to know that the recording is in progress
     touch "$HOME/.config/hypr/scripts/gpu-screen-recorder/RUNNING"
 
-    gpu-screen-recorder -w "$monitor" -a "$audio" -f $frameRate -c $fileType -r $replaySeconds -cr $colorRange -mf "yes" -o "$outputDir"
+    gpu-screen-recorder -w "$monitor" -a "$audio" -f $frameRate -c $fileType -r $replaySeconds -cr $colorRange -df "yes" -o "$outputDir"
 
 else
     echo "Recording already in progress"

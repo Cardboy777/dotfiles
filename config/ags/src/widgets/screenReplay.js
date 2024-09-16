@@ -1,7 +1,7 @@
 import { settings } from "../settings.js";
 
-const recordingIcon = "media-record";
-const notRecordingIcon = "media-playback-stop";
+const recordingIcon = "replay-record";
+const notRecordingIcon = "replay-stop";
 
 const fileEvents = {
   deleted: 2,
@@ -18,17 +18,17 @@ function runCommand(command, runAsyncrounously = true) {
   return func(["bash", "-c", command]);
 }
 
+function isRecorderAppRunning() {
+  return runCommand("pgrep -x gpu-screen-reco", false).trim() !== "";
+}
+
 const scriptsDir = `${runCommand("echo $HOME", false)}/.config/hypr/scripts/gpu-screen-recorder`;
 
 export function ScreenRecorder() {
   const isRecording = Variable(true);
 
-  Utils.monitorFile(`${scriptsDir}/RUNNING`, (_, event) => {
-    if (event === fileEvents.created) {
-      isRecording.value = true;
-    } else if (event === fileEvents.deleted) {
-      isRecording.value = false;
-    }
+  Utils.interval(1000, () => {
+    isRecording.value = isRecorderAppRunning();
   });
 
   const icon = isRecording.bind().as((v) => {
