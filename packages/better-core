@@ -8,6 +8,8 @@ fisher
 flatpak
 gnome-keyring
 paru
+rofi-wayland
+rofimoji
 starship
 tldr
 ueberzugpp
@@ -17,4 +19,5 @@ wine-gecko
 wine-mono
 winetricks
 wireplumber
+wtype
 yazi
