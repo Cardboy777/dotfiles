@@ -117,7 +117,7 @@ mason_lspconfig.setup({
     'pylsp',
     'tailwindcss',
     'taplo',
-    'tsserver',
+    'ts_ls',
     'volar',
     'yamlls',
   },
