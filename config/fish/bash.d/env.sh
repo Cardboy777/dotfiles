@@ -1,5 +1,5 @@
 #!/bin/bash
-export TERMINAL=alacritty
+export TERMINAL=kitty
 export EDITOR=nvim
 
 #mason bin

@@ -1,11 +1,11 @@
 configuration {           
 	modes: "drun";
-    font: "mono 12";
+    font: "CommitMono Nerd Font Mono 12";
     fixed-num-lines: true;
 	show-icons: true;
 	steal-focus: true;
 	match: "fuzzy";
-	terminal: "alacritty";
+	terminal: "kitty";
 	drun-display-format: "{icon} {name}";
 
 	drun {
