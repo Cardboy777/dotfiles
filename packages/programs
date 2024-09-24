@@ -1,5 +1,6 @@
 7-zip-full
 arronax
+bcompare-thunar
 blueman
 brave-bin
 dconf-editor
@@ -9,10 +10,10 @@ helvum
 leafpad
 librewolf
 mpv
-nemo
-nemo-fileroller
-nemo-seahorse
 okular
 seahorse
 spicetify-cli
 spotify-launcher
+thunar
+thunar-archive-plugin
+thunar-shares-plugin
