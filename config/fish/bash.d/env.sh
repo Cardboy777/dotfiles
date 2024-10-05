@@ -1,6 +1,7 @@
 #!/bin/bash
 export TERMINAL=kitty
 export EDITOR=nvim
+export BROWSER=brave
 
 #mason bin
 export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
