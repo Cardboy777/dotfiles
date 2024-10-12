@@ -1,40 +1,52 @@
 #!/bin/bash
 
+WallpaperRootDir="$HOME/Pictures/Wallpapers/_Active"
+
 function getRandomFile() {
     local dir=$1
     find "$dir" -maxdepth 1 | sort -R | tail -n 1
 }
 
-Dir1080pH="$HOME/Pictures/Wallpapers/_Active/1080p"
-Dir1080pV="$HOME/Pictures/Wallpapers/_Active/1080p-Vertical"
-Dir1440p="$HOME/Pictures/Wallpapers/_Active/1440p"
-
-monitor1440p="DP-1"      # Samsung
-monitor1080pH="DP-3"     # HP
-monitor1080pV="HDMI-A-1" # Asus
-
-image1440p=$(getRandomFile "$Dir1440p")
-image1080pH=$(getRandomFile "$Dir1080pH")
-image1080pV=$(getRandomFile "$Dir1080pV")
-
 function setSwww() {
-    swww img -o $monitor1440p -t wave --transition-angle 70 --transition-wave 12,12 "$image1440p"
-    swww img -o $monitor1080pH -t wave --transition-angle 70 --transition-wave 12,12 "$image1080pH"
-    swww img -o $monitor1080pV -t wave --transition-angle 70 --transition-wave 12,12 "$image1080pV"
+    local monitor=$1
+    local image=$2
+    swww img -o "$monitor" -t random --transition-angle 70 --transition-wave 12,12 "$image"
 }
-
-setSwww
 
 function setHyprpaper() {
-    hyprctl hyprpaper unload all
+    local monitor=$1
+    local image=$2
 
-    hyprctl hyprpaper preload "$image1440p"
-    hyprctl hyprpaper preload "$image1080pH"
-    hyprctl hyprpaper preload "$image1080pV"
-
-    hyprctl hyprpaper wallpaper "$monitor1440p,$image1440p"
-    hyprctl hyprpaper wallpaper "$monitor1080pH,$image1080pH"
-    hyprctl hyprpaper wallpaper "$monitor1080pV,$image1080pV"
+    hyprctl hyprpaper preload "$image"
+    hyprctl hyprpaper wallpaper "$monitor,$image"
 }
 
-# setHyprpaper
+function setWallpapers() {
+    local monitorsList
+    monitorsList=$(hyprctl monitors -j | jq '[ .[] | { name: .name, height: .height } + if (.transform == 1 or .transform == 3) then {is_vertical: true} else {is_vertical: false} end + if (.transform == 1 or .transform == 3) then {resolution: (.height | tostring + "p-Vertical")} else {resolution: (.height | tostring + "p")} end ]')
+    local monitorCount
+    monitorCount=$(echo "$monitorsList" | jq 'length')
+
+    if pgrep -x hyprpaper >/dev/null; then
+        hyprctl hyprpaper unload all
+    fi
+
+    for i in $(seq 0 $(("$monitorCount" - 1))); do
+        local monitor
+        monitor=$(echo "$monitorsList" | jq -r ".[$i].name")
+        local resolution
+        resolution=$(echo "$monitorsList" | jq -r ".[$i].resolution")
+        local image
+        image=$(getRandomFile "$WallpaperRootDir/$resolution")
+
+        printf "%s %s\n%s\n\n" "$monitor" "$resolution" "$image"
+
+        if pgrep -x hyprpaper >/dev/null; then
+            setHyprpaper "$monitor" "$image"
+        elif pgrep -x swww-daemon >/dev/null; then
+            setSwww "$monitor" "$image"
+        fi
+    done
+}
+
+setWallpapers
