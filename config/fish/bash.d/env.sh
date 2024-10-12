@@ -23,16 +23,12 @@ fi
 # Poetry
 export PATH="$HOME/.local/bin:$PATH"
 
-#dotnet
-# export DOTNETTOOL_HOME="$HOME/.dotnet/tools"
-# export PATH="$DOTNETTOOL_HOME:$PATH"
-# export ASPNETCORE_ENVIRONMENT=Development
+# dotnet
+export DOTNETTOOL_HOME="$HOME/.dotnet/tools"
+export PATH="$DOTNETTOOL_HOME:$PATH"
+export ASPNETCORE_ENVIRONMENT=Development
 export DOTNET_CLI_TELMETRY_OPTOUT=1
 #dotnet end
-
-# asdf
-export ASDF_CONFIG_FILE="$HOME/.config/asdf/.asdfrc"
-source /opt/asdf-vm/asdf.sh
 
 #Ship of Harikinian directory variable
 export SHIP_HOME="$HOME/Games/ShipOfHarkinian"
