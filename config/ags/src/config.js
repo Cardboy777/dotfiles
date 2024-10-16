@@ -8,7 +8,7 @@ import { SystemTray } from "./widgets/systemTray.js";
 import { Clock } from "./widgets/clock.js";
 // import { Notifications } from "./widgets/notifications.js";
 import { Calendar } from "./widgets/calendar.js";
-import { NotificationPopups } from "./widgets/notificationPopup.js";
+//import { NotificationPopups } from "./widgets/notificationPopup.js";
 
 import styles from "./style.css";
 
@@ -77,8 +77,6 @@ const monitors = [0, 1, 2];
 
 App.config({
   style: styles,
-  windows: monitors
-    .map((m) => Windows(m))
-    .flat()
-    .concat([NotificationPopups()]),
+  windows: monitors.map((m) => Windows(m)).flat(),
+  //.concat([NotificationPopups()])
 });
