@@ -3,6 +3,7 @@ import { MicrophoneMute } from "./microphoneMute.js";
 import { Auth } from "./authKey.js";
 import { ScreenRecorder } from "./screenReplay.js";
 import { VolumeSettings } from "./volumeSettings.js";
+import { NotificationListToggle } from "./notificationListToggle.js";
 
 const systemtray = await Service.import("systemtray");
 
@@ -51,7 +52,11 @@ export function SystemTray() {
     });
 
   const extraBefore = [ScreenRecorder(), Auth()];
-  const extraAfter = [VolumeSettings(), MicrophoneMute()];
+  const extraAfter = [
+    VolumeSettings(),
+    MicrophoneMute(),
+    NotificationListToggle(),
+  ];
 
   return Widget.Box({
     children: systemtray
