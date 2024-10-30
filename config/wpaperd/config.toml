@@ -1,0 +1,12 @@
+[default]
+mode = "fit"
+sorting = "random"
+
+[DP-1]
+path = "~/Pictures/Wallpapers/_Active/1440p"
+
+[DP-3]
+path = "~/Pictures/Wallpapers/_Active/1080p"
+
+[HDMI-A-1]
+path = "~/Pictures/Wallpapers/_Active/1080p-Vertical"
