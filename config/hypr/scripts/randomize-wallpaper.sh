@@ -21,7 +21,17 @@ function setHyprpaper() {
     hyprctl hyprpaper wallpaper "$monitor,$image" &
 }
 
+function setWpaperd() {
+    wpaperctl next
+}
+
 function setWallpapers() {
+    #wpaper is goated and doesn't require anything fancy
+    if pgrep -x wpaperd >/dev/null; then
+        setWpaperd
+        return 0
+    fi
+
     local monitorsList
     monitorsList=$(hyprctl monitors -j | jq '[ .[] | { name: .name, height: .height } + if (.transform == 1 or .transform == 3) then {is_vertical: true} else {is_vertical: false} end + if (.transform == 1 or .transform == 3) then {resolution: (.height | tostring + "p-Vertical")} else {resolution: (.height | tostring + "p")} end ]')
     local monitorCount
