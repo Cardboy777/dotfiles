@@ -10,7 +10,7 @@ function getRandomFile() {
 function setSwww() {
     local monitor=$1
     local image=$2
-    swww img -o "$monitor" --resize fit -t random --transition-duration 1 --transition-fps 144 --transition-angle 70 --transition-wave 12,12 "$image" &
+    swww img -o "$monitor" --resize fit -t any --transition-duration 1 --transition-fps 240 --transition-angle 70 --transition-wave 12,12 "$image" &
 }
 
 function setHyprpaper() {
