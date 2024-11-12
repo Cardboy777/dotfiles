@@ -2,6 +2,7 @@
 export TERMINAL=kitty
 export EDITOR=nvim
 export BROWSER=brave
+export MANPAGER="less -R --use-color -Dd+r -Du+b"
 
 #mason bin
 export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
