@@ -1,9 +1,7 @@
 #!/bin/bash
 
-if [[ $(pgrep -x "ags") != "" ]]
-then
-    killall ags
-    ags > /dev/null 2>&1 &
-else
-    ags > /dev/null 2>&1 &
+if [[ $(pgrep -x "gjs") != "" ]]; then
+    killall gjs
 fi
+
+ags run >/dev/null 2>&1 &
