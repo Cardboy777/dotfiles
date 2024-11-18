@@ -8,6 +8,7 @@ fisher
 flatpak
 gnome-keyring
 kitty
+kitty-terminfo
 paru
 rofi-wayland
 rofimoji
