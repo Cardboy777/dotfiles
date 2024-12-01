@@ -5,7 +5,7 @@ return {
     lint.linters_by_ft = {
       python = { 'pylint' },
       lua = {},
-      rust = { 'cargo' },
+      rust = {},
       javascript = { 'eslint_d' },
       typescript = { 'eslint_d' },
       typescriptreact = { 'eslint_d' },

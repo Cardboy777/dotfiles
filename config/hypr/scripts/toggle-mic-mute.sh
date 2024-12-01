@@ -1,7 +1,7 @@
 #!/bin/bash
 # this scripts finds the wireplumber device id for the microphone and toggles the mute state
 
-device_name="Scarlett 2i2 3rd Gen Input 1 Mic/Inst/Line"
+device_name="Scarlett 2i2 3rd Gen Input 1 Mic/Inst/Line \[vol\:"
 
 # get the wireplumber device id for the microphone
 device_id=$(wpctl status | grep "$device_name" | grep -oEm 1 '[[:digit:]]+\.' | cut -d'.' -f1 | head -n 1)
