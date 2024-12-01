@@ -1,5 +1,5 @@
 import { App } from "astal/gtk3"
-import { Variable, GLib, bind } from "astal"
+import { Process, Variable, GLib, bind, exec, interval } from "astal"
 import { Astal, Gtk, Gdk } from "astal/gtk3"
 import Hyprland from "gi://AstalHyprland"
 import Mpris from "gi://AstalMpris"
@@ -60,6 +60,62 @@ function MuteIcon() {
     const iconName = isMuted.as(v => v ? mutedIcon : unmutedIcon)
 
     return <icon className="mic-status" icon={iconName} />
+}
+
+const recordingIcon = "replay-record";
+const notRecordingIcon = "replay-stop";
+
+function runCommand(command: string) {
+    return exec(["bash", "-c", command]);
+}
+
+function isRecorderAppRunning() {
+    const value = runCommand("pgrep -x gpu-screen-reco")
+    console.log(value);
+    return value?.trim() !== "";
+}
+
+function GPURecorder() {
+    const scriptsDir = `${runCommand("echo $HOME")}/.config/hypr/scripts/gpu-screen-recorder`;
+    const isRecording = Variable(true);
+
+    interval(1000, () => {
+        isRecording.set(isRecorderAppRunning());
+    });
+
+    const isRecordingBinding = bind(isRecording);
+
+    const icon = isRecordingBinding.as((v) => {
+        return v ? recordingIcon : notRecordingIcon;
+    });
+
+    const class_name = isRecordingBinding.as((v) => {
+        return `screen-replay ${v ? "recording" : "not-recording"}`;
+    });
+
+    const tooltipMarkup = isRecordingBinding.as((v) => {
+        return `Screen Replay\n${v ? "Recording" : "Not Recording"}`;
+    });
+
+    return <button
+        className={class_name}
+        tooltipMarkup={tooltipMarkup}
+        onClickRelease={() => runCommand(`${scriptsDir}/save.sh true`)}
+    >
+        <icon
+            icon={icon}
+        />
+    </button>;
+}     
+ 
+function EnteAuth()    {
+    return <button
+        className="ente-auth"
+        tooltipMarkup="Open Ente Auth for 2F codes"
+        onClickRelease={() => runCommand("enteauth")}
+    >
+        <icon icon="keepassxc-dark"/>
+    </button>
 }
 
 function Media() {
@@ -147,6 +203,7 @@ export default function Bar(monitor: Gdk.Monitor) {
             </box>
             <box hexpand halign={Gtk.Align.END} >
                 <MuteIcon />
+                <EnteAuth />
                 <SysTray />
                 <Wifi />
                 <Time />
