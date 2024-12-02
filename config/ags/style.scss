@@ -6,8 +6,15 @@ $theme_selected_bg_color: #{"@theme_selected_bg_color"};
 $radius: 4px;
 
 window.Bar {
+    color: $theme_text_color;
+
+    button {
+        margin: 4px 2px;
+        padding: 2px 2px;
+        font-size: 17px;
+    }
+
     background: transparent;
-    color: $theme_bg_color;
     font-weight: bold;
 
     >centerbox {
@@ -24,6 +31,7 @@ window.Bar {
         font-size: 17px;
 
         button {
+            margin: 0;
             padding: 4 6px;
 
             &.focused {
@@ -36,30 +44,29 @@ window.Bar {
         }
     }
 
-    .FocusedClient {
-        color: $theme_text_color;
+    .Focused {
+        margin-left: 4px;
+        font-size: 11px;
     }
 
     .mic-status {
         margin-right: 4px;
     }
 
-    .ente-auth {
-        margin: 4px 2px;
-        padding: 2px 2px;
-        font-size: 17px;
-    }
-
-    .Tray {
-        button {
-            margin: 4px 2px;
-            padding: 2px 2px;
-            font-size: 17px;
-        }
-    }
-
     .Time {
-        color: $theme_text_color;
         margin-right: 8px;
+    }
+
+    .Media {
+        padding: 2px;
+        font-size: 11px;
+
+        .media-label {
+            margin-right: 12px;
+        }
+
+        .media-not-playing {
+            color: $theme_selected_bg_color;
+        }
     }
 }
