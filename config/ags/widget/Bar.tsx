@@ -106,15 +106,15 @@ function GPURecorder() {
             icon={icon}
         />
     </button>;
-}     
- 
-function EnteAuth()    {
+}
+
+function EnteAuth() {
     return <button
         className="ente-auth"
         tooltipMarkup="Open Ente Auth for 2F codes"
         onClickRelease={() => runCommand("enteauth")}
     >
-        <icon icon="keepassxc-dark"/>
+        <icon icon="keepassxc-dark" />
     </button>
 }
 
@@ -122,24 +122,37 @@ function Media() {
     const mpris = Mpris.get_default()
 
     return <box className="Media">
-        {bind(mpris, "players").as(ps => ps[0] ? (
-            <box>
-                <box
-                    className="Cover"
-                    valign={Gtk.Align.CENTER}
-                    css={bind(ps[0], "coverArt").as(cover =>
-                        `background-image: url('${cover}');`
-                    )}
-                />
-                <label
-                    label={bind(ps[0], "title").as(() =>
-                        `${ps[0].title} - ${ps[0].artist}`
-                    )}
-                />
-            </box>
-        ) : (
-            "Nothing Playing"
-        ))}
+        {bind(mpris, "players").as(ps => {
+            const player = ps[0];
+            if (!player) {
+                return (
+                    <label className="media-not-playing">-Nothing Playing-</label>
+                );
+            }
+
+            const isPaused = bind(player, "playbackStatus").as(s => s !== 0);
+
+            return (
+                <box>
+                    <box
+                        className="Cover"
+                        valign={Gtk.Align.CENTER}
+                        css={bind(player, "coverArt").as(cover =>
+                            `background-image: url('${cover}');`
+                        )}
+                    />
+                    <label
+                        className="media-label"
+                        label={bind(player, "title").as(() =>
+                            `${player.title} - ${player.artist}`
+                        )}
+                    />
+                    <button onClicked={() => player.previous()}><icon icon="media-skip-backward-symbolic" /></button>
+                    <button onClicked={() => player.play_pause()}><icon icon={isPaused.as(p => p ? "media-playback-start-symbolic" : "media-playback-pause-symbolic")} /></button>
+                    <button onClicked={() => player.next()}><icon icon="media-skip-forward-symbolic" /></button>
+                </box>
+            );
+        })}
     </box>
 }
 
