@@ -32,7 +32,7 @@ window.Bar {
 
         button {
             margin: 0;
-            padding: 4 6px;
+            padding: 2px 4px;
 
             &.focused {
                 background-color: $theme_selected_bg_color;
@@ -58,7 +58,6 @@ window.Bar {
     }
 
     .Media {
-        padding: 2px;
         font-size: 11px;
 
         .media-label {

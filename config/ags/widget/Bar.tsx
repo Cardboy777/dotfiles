@@ -1,5 +1,5 @@
 import { App } from "astal/gtk3"
-import { Process, Variable, GLib, bind, exec, interval } from "astal"
+import { Variable, GLib, bind, exec, interval } from "astal"
 import { Astal, Gtk, Gdk } from "astal/gtk3"
 import Hyprland from "gi://AstalHyprland"
 import Mpris from "gi://AstalMpris"
@@ -32,16 +32,6 @@ function SysTray() {
                 </button>
             }))}
     </box>
-}
-
-function Wifi() {
-    const { wifi } = Network.get_default()
-
-    return <icon
-        tooltipText={bind(wifi, "ssid").as(String)}
-        className="Wifi"
-        icon={bind(wifi, "iconName")}
-    />
 }
 
 const mutedIcon = "microphone-sensitivity-muted";
@@ -126,7 +116,7 @@ function Media() {
             const player = ps[0];
             if (!player) {
                 return (
-                    <label className="media-not-playing">-Nothing Playing-</label>
+                    <label className="media-not-playing" label="- Nothing Playing -" />
                 );
             }
 
@@ -218,7 +208,6 @@ export default function Bar(monitor: Gdk.Monitor) {
                 <MuteIcon />
                 <EnteAuth />
                 <SysTray />
-                <Wifi />
                 <Time />
             </box>
         </centerbox>
