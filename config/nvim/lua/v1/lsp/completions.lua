@@ -53,11 +53,12 @@ cmp.setup({
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
     { name = 'path' },
+    { name = 'minuet' },
     { name = 'copilot', group_index = 2 },
   },
   formatting = {
     expandable_indicator = true,
-    fields = { "kind", "abbr", "menu" },
+    fields = { 'kind', 'abbr', 'menu' },
     format = lspkind.cmp_format({
       mode = 'symbol',
       maxwidth = 80,
