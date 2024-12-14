@@ -1,14 +1,21 @@
 #!/bin/bash
+
+#in case these aren't set for some reason
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CACHE_HOME=$HOME/.cache
+export XDG_DATA_HOME=$HOME/.local/share
+export XDG_STATE_HOME=$HOME/.local/state
+
 export TERMINAL=kitty
 export EDITOR=nvim
 export BROWSER=brave
 export MANPAGER="less -R --use-color -Dd+r -Du+b"
 
 #mason bin
-export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
+export PATH="$XDG_DATA_HOME/nvim/mason/bin:$PATH"
 
 # pnpm
-export PNPM_HOME="$HOME/.local/share/pnpm"
+export PNPM_HOME="$XDG_DATA_HOME/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 # pnpm end
 
