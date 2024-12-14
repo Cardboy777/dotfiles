@@ -1,7 +1,9 @@
 #!/bin/bash
 
 if [[ $(pgrep -x "gjs") != "" ]]; then
-    killall gjs
+    killall -KILL gjs
 fi
 
-ags run >/dev/null 2>&1 &
+mkdir -p "$XDG_STATE_HOME/ags"
+
+ags run >"$XDG_STATE_HOME/ags/ags.log" 2>&1 &
