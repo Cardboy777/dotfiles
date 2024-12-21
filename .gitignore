@@ -3,5 +3,4 @@ config/tmux/plugins/*
 config/lazygit/state.yml
 config/btop/btop.log
 config/hypr/scripts/gpu-screen-recorder/RUNNING
-config/ags/config.js
-config/ags/style-*.css
+config/spicetify/Extracted
