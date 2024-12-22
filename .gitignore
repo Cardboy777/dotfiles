@@ -1,5 +1,4 @@
 themes/*
-config/tmux/plugins/*
 config/lazygit/state.yml
 config/btop/btop.log
 config/hypr/scripts/gpu-screen-recorder/RUNNING
