@@ -15,28 +15,25 @@ export function SystemTray() {
         {bind(tray, "items").as(items => items
             .filter(item => !excludeList.includes(item.id))
             .map(item => {
-                console.log(item.id, item.iconThemePath);
                 let overrideIcon = new Variable<string | undefined>(trayIconOverride[item.id])
                 if (item.iconThemePath) {
                     App.add_icons(item.iconThemePath)
                 }
 
-                const menu = item.create_menu()
-
-                return <button
+                return <menubutton
                     tooltipMarkup={bind(item, "tooltipMarkup")}
-                    onDestroy={() => menu?.destroy()}
-                    onClickRelease={self => {
-                        menu?.popup_at_widget(self, Gdk.Gravity.SOUTH, Gdk.Gravity.NORTH, null)
-                    }}>
+                    usePopover={false}
+                    actionGroup={bind(item, "action-group").as(ag => ["dbusmenu", ag])}
+                    menuModel={bind(item, "menu-model")}
+                >
                     {
                         bind(overrideIcon).as(v =>
                             v
                                 ? (<icon icon={v} />)
-                                : (<icon gIcon={bind(item, "gicon")} />)
+                                : (<icon gicon={bind(item, "gicon")} />)
                         )
                     }
-                </button>
+                </menubutton>
             }))}
     </box>
 }
