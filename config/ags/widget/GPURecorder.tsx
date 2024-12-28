@@ -5,8 +5,13 @@ const recordingIcon = "replay-record";
 const notRecordingIcon = "replay-stop";
 
 function isRecorderAppRunning() {
-    const value = bashRun("pgrep -x gpu-screen-reco")
-    return value?.trim() !== "";
+    try {
+        const value = bashRun("pgrep gpu-screen-reco", false)
+        return value?.trim() !== "";
+    }
+    catch (e) {
+        return false
+    }
 }
 
 export function GPURecorder() {

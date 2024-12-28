@@ -6,6 +6,7 @@ import { Media } from "./Media"
 import { MicrophoneMute } from "./MicrophoneMute"
 import { Clock } from "./Clock"
 import { SystemTray } from "./SystemTray"
+import { GPURecorder } from './GPURecorder';
 
 export default function Bar(monitor: Gdk.Monitor) {
     const anchor = Astal.WindowAnchor.BOTTOM
@@ -26,6 +27,7 @@ export default function Bar(monitor: Gdk.Monitor) {
                 <Media />
             </box>
             <box hexpand halign={Gtk.Align.END} >
+                <GPURecorder />
                 <MicrophoneMute />
                 <EnteAuth />
                 <SystemTray />
