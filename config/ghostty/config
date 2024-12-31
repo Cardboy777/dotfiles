@@ -1,0 +1,14 @@
+window-decoration = false
+theme = tokyonight-storm
+background-opacity = 0.8
+background-blur-radius = 20
+cursor-style = block
+
+font-family = "CommitMono Nerd Font Mono"
+font-feature = -liga
+font-size = 12
+
+auto-update = off
+shell-integration-features = no-cursor, sudo, title
+focus-follows-mouse = true
+

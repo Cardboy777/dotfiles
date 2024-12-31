@@ -6,7 +6,7 @@ export XDG_CACHE_HOME=$HOME/.cache
 export XDG_DATA_HOME=$HOME/.local/share
 export XDG_STATE_HOME=$HOME/.local/state
 
-export TERMINAL=kitty
+export TERMINAL=ghostty
 export EDITOR=nvim
 export BROWSER=brave
 export MANPAGER="less -R --use-color -Dd+r -Du+b"

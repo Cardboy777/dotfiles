@@ -7,8 +7,7 @@ fish
 fisher
 flatpak
 gnome-keyring
-kitty
-kitty-terminfo
+ghostty
 paru
 rofi-wayland
 rofimoji
