@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+<action>
+	<icon>utilities-terminal</icon>
+	<name>Open Terminal Here</name>
+	<submenu></submenu>
+	<unique-id>1611168259857250-1</unique-id>
+	<command>$TERMINAL %F</command>
+	<description>Example for a custom action</description>
+	<range></range>
+	<patterns>*</patterns>
+	<startup-notify/>
+	<directories/>
+</action>
+<action>
+	<icon>nvim</icon>
+	<name>Open in NeoVim</name>
+	<submenu></submenu>
+	<unique-id>1700719920918052-1</unique-id>
+	<command>$TERMINAL -e &quot;nvim %F&quot;</command>
+	<description>Open in NeoVim</description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<directories/>
+	<text-files/>
+</action>
+<action>
+	<icon>inode-symlink</icon>
+	<name>Paste as Link</name>
+	<submenu></submenu>
+	<unique-id>1728106758625839-1</unique-id>
+	<command>ln -s %F .</command>
+	<description>Paste currently selected items as Symbolic Links in current directory</description>
+	<range>1-*</range>
+	<patterns>*</patterns>
+	<directories/>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
+</actions>
