@@ -6,4 +6,4 @@ fi
 
 mkdir -p "$XDG_STATE_HOME/ags"
 
-ags run >"$XDG_STATE_HOME/ags/ags.log" 2>&1 &
+ags run >"$XDG_STATE_HOME/ags/ags.log" 2>&1
