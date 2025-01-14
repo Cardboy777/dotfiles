@@ -10,7 +10,7 @@ function restartHyprpaper() {
 }
 function restartSwww() {
     pkill -x swww-daemon
-    nohup swww-daemon >/dev/null 2>&1 &
+    nohup swww-daemon --xrgb >/dev/null 2>&1 &
 }
 
 function restartWallpaperDaemon() {
