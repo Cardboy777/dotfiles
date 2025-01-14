@@ -71,3 +71,6 @@ vim.keymap.set('n', '<leader>sG', ':LiveGrepGitRoot<cr>', { desc = '[S]earch by 
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
 vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = '[S]earch [R]esume' })
 vim.keymap.set('n', '<leader>hk', require('telescope.builtin').keymaps, { desc = '[H]elp [K]eybinds' })
+vim.keymap.set('n', '<leader>ef', function()
+  require('telescope.builtin').find_files({ cwd = require('telescope.utils').buffer_dir() })
+end, { desc = '[E]xplore local [F]iles' })
