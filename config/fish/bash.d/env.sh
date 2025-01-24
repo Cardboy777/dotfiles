@@ -38,5 +38,8 @@ export ASPNETCORE_ENVIRONMENT=Development
 export DOTNET_CLI_TELMETRY_OPTOUT=1
 #dotnet end
 
+#go
+export PATH="$HOME/go/bin:$PATH"
+
 #Ship of Harikinian directory variable
 export SHIP_HOME="$HOME/Games/ShipOfHarkinian"
