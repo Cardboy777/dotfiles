@@ -40,6 +40,3 @@ export DOTNET_CLI_TELMETRY_OPTOUT=1
 
 #go
 export PATH="$HOME/go/bin:$PATH"
-
-#Ship of Harikinian directory variable
-export SHIP_HOME="$HOME/Games/ShipOfHarkinian"
