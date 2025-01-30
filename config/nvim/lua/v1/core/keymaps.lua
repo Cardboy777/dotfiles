@@ -2,7 +2,7 @@ vim.keymap.set('n', '<leader>ga', function()
   vim.cmd('git add *')
 end, { desc = '[G]it [A]dd' })
 
-vim.keymap.set('n', '<leader>gp', function() end, { desc = '[G]it [P]ush' })
+vim.keymap.set('n', '<leader>fr', require('spectre').toggle, { desc = '[F]ind [R]eplace (Global)' })
 
 -- Make Deleting actually delete
 vim.keymap.set('n', 'dd', '"_dd', { desc = 'Delete Line' })

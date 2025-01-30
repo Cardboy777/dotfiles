@@ -8,6 +8,7 @@ local on_attach = function(_, bufnr)
   end
 
   nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
+  -- nmap('<leader>lr', vim.cmd('LspRestart'), '[R]estart [L]SP server')
 
   nmap('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
   nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
