@@ -1,7 +1,5 @@
 #!/bin/bash
 
-alias npm=pnpm
-
 alias vim=nvim
 
 alias htop=btop
