@@ -9,7 +9,7 @@ import { SystemTray } from "./SystemTray"
 import { GPURecorder } from './GPURecorder';
 
 export default function Bar(monitor: Gdk.Monitor) {
-    const anchor = Astal.WindowAnchor.BOTTOM
+    const anchor = Astal.WindowAnchor.TOP
         | Astal.WindowAnchor.LEFT
         | Astal.WindowAnchor.RIGHT
 
