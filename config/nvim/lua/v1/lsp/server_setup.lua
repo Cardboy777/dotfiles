@@ -7,7 +7,11 @@ local on_attach = function(_, bufnr)
     vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
   end
 
-  nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
+  nmap('<leader>ca', function()
+    vim.lsp.buf.code_action({ context = {
+      only = { 'refactor', 'quickfix', 'source' },
+    } })
+  end, '[C]ode [A]ction')
   -- nmap('<leader>lr', vim.cmd('LspRestart'), '[R]estart [L]SP server')
 
   nmap('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
