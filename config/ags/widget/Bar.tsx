@@ -7,6 +7,7 @@ import { MicrophoneMute } from "./MicrophoneMute"
 import { Clock } from "./Clock"
 import { SystemTray } from "./SystemTray"
 import { GPURecorder } from './GPURecorder';
+import { BatteryLevel } from "./Battery"
 
 export default function Bar(monitor: Gdk.Monitor) {
     const anchor = Astal.WindowAnchor.TOP
@@ -31,6 +32,7 @@ export default function Bar(monitor: Gdk.Monitor) {
                 <MicrophoneMute />
                 <EnteAuth />
                 <SystemTray />
+                <BatteryLevel />
                 <Clock />
             </box>
         </centerbox>
