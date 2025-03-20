@@ -50,7 +50,7 @@ window.Bar {
     }
 
     .Time {
-        margin: 0 8px;
+        margin-right: 8px;
     }
 
     .Media {
@@ -62,6 +62,14 @@ window.Bar {
 
         .media-not-playing {
             color: $theme_selected_bg_color;
+        }
+    }
+
+    .Battery {
+        margin: 0 4px;
+
+        icon {
+            margin-right: 4px;
         }
     }
 }
