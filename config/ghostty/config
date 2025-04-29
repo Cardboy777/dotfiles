@@ -12,3 +12,8 @@ auto-update = off
 shell-integration-features = no-cursor, sudo, title
 focus-follows-mouse = true
 confirm-close-surface = false
+
+
+keybind = ctrl+equal=unbind
+keybind = ctrl+minus=unbind
+

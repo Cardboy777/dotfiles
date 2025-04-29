@@ -1,6 +1,7 @@
 alacritty
 bat
 btop-gpu-git
+rocm-smi-lib
 eza
 fastfetch
 fish
