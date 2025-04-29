@@ -75,3 +75,4 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 -- update diagnostics while in insert mode
 vim.diagnostic.config({ update_in_insert = true })
+vim.diagnostic.config({ virtual_text = true })
