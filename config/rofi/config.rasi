@@ -5,7 +5,7 @@ configuration {
 	show-icons: true;
 	steal-focus: true;
 	match: "fuzzy";
-	terminal: "ghostty";
+	terminal: "alacritty";
 	drun-display-format: "{icon} {name}";
 
 	drun {
