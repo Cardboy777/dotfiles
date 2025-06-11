@@ -16,3 +16,12 @@ import = ["~/Repositories/dotfiles/config/alacritty/tokyonight_moon.toml"]
 
 [terminal]
 shell = "/bin/fish"
+
+[keyboard]
+bindings = [
+	{ key = '-', mods='Control', action='None' },
+	{ key = '-', mods='Shift|Control',  action='DecreaseFontSize' },
+
+	{ key = '+', mods='Control', action='None' },
+	{ key = '+', mods='Shift|Control', action='IncreaseFontSize' },
+]
