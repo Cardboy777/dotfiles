@@ -8,7 +8,11 @@ export function FocusedClient() {
     return <box
         className="Focused"
         visible={focused.as(Boolean)}>
-        <label label={focused.as(c => c?.title ?? "")} />
+        <label
+			label={focused.as(c => c?.title ?? "")}
+			ellipsize="3"
+			max-width-chars="50"
+		/>
     </box>
 }
 

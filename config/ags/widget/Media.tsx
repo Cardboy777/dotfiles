@@ -30,6 +30,8 @@ export function Media() {
                         label={bind(player, "title").as(() =>
                             `${player.title} - ${player.artist}`
                         )}
+						ellipsize="3"
+						max-width-chars="50"
                     />
                     <button onClicked={() => player.previous()}><icon icon="media-skip-backward-symbolic" /></button>
                     <button onClicked={() => player.play_pause()}><icon icon={isPaused.as(p => p ? "media-playback-start-symbolic" : "media-playback-pause-symbolic")} /></button>
