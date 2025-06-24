@@ -51,7 +51,7 @@ return {
   -- Then, because we use the `opts` key (recommended), the configuration runs
   -- after the plugin has been loaded as `require(MODULE).setup(opts)`.
 
-  {                     -- Useful plugin to show you pending keybinds.
+  { -- Useful plugin to show you pending keybinds.
     'folke/which-key.nvim',
     event = 'VimEnter', -- Sets the loading event to 'VimEnter'
     opts = {
@@ -118,13 +118,13 @@ return {
         -- `cond` is a condition used to determine whether this plugin should be
         -- installed and loaded.
         cond = function()
-          return vim.fn.executable 'make' == 1
+          return vim.fn.executable('make') == 1
         end,
       },
       { 'nvim-telescope/telescope-ui-select.nvim' },
 
       -- Useful for getting pretty icons, but requires a Nerd Font.
-      { 'nvim-tree/nvim-web-devicons',            enabled = vim.g.have_nerd_font },
+      { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
     },
     config = function()
       -- Telescope is a fuzzy finder that comes with a lot of different things that
@@ -148,7 +148,7 @@ return {
 
       -- [[ Configure Telescope ]]
       -- See `:help telescope` and `:help telescope.setup()`
-      require('telescope').setup {
+      require('telescope').setup({
         -- You can put your default mappings / updates / etc. in here
         --  All the info you're looking for is in `:help telescope.setup()`
         --
@@ -163,14 +163,14 @@ return {
             require('telescope.themes').get_dropdown(),
           },
         },
-      }
+      })
 
       -- Enable Telescope extensions if they are installed
       pcall(require('telescope').load_extension, 'fzf')
       pcall(require('telescope').load_extension, 'ui-select')
 
       -- See `:help telescope.builtin`
-      local builtin = require 'telescope.builtin'
+      local builtin = require('telescope.builtin')
       vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
       vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
       vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
@@ -179,31 +179,30 @@ return {
       vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
       vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
       vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
-      vim.keymap.set('n', '<leader>s.', builtin.oldfiles,
-        { desc = '[S]earch Recent Files ("." for repeat)' })
+      vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()
         -- You can pass additional configuration to Telescope to change the theme, layout, etc.
-        builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+        builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown({
           winblend = 10,
           previewer = false,
-        })
+        }))
       end, { desc = '[/] Fuzzily search in current buffer' })
 
       -- It's also possible to pass additional configuration options.
       --  See `:help telescope.builtin.live_grep()` for information about particular keys
       vim.keymap.set('n', '<leader>s/', function()
-        builtin.live_grep {
+        builtin.live_grep({
           grep_open_files = true,
           prompt_title = 'Live Grep in Open Files',
-        }
+        })
       end, { desc = '[S]earch [/] in Open Files' })
 
       -- Shortcut for searching your Neovim configuration files
       vim.keymap.set('n', '<leader>sn', function()
-        builtin.find_files { cwd = vim.fn.stdpath 'config' }
+        builtin.find_files({ cwd = vim.fn.stdpath('config') })
       end, { desc = '[S]earch [N]eovim files' })
     end,
   },
@@ -233,7 +232,7 @@ return {
       'WhoIsSethDaniel/mason-tool-installer.nvim',
 
       -- Useful status updates for LSP.
-      { 'j-hui/fidget.nvim',    opts = {} },
+      { 'j-hui/fidget.nvim', opts = {} },
 
       -- Allows extra capabilities provided by blink.cmp
       'saghen/blink.cmp',
@@ -278,8 +277,7 @@ return {
           -- for LSP related items. It sets the mode, buffer and description for us each time.
           local map = function(keys, func, desc, mode)
             mode = mode or 'n'
-            vim.keymap.set(mode, keys, func,
-              { buffer = event.buf, desc = 'LSP: ' .. desc })
+            vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
           end
 
           -- Rename the variable under your cursor.
@@ -295,8 +293,7 @@ return {
 
           -- Jump to the implementation of the word under your cursor.
           --  Useful when your language has ways of declaring types without an actual implementation.
-          map('gri', require('telescope.builtin').lsp_implementations,
-            '[G]oto [I]mplementation')
+          map('gri', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
 
           -- Jump to the definition of the word under your cursor.
           --  This is where a variable was first declared, or where a function is defined, etc.
@@ -309,19 +306,16 @@ return {
 
           -- Fuzzy find all the symbols in your current document.
           --  Symbols are things like variables, functions, types, etc.
-          map('gO', require('telescope.builtin').lsp_document_symbols,
-            'Open Document Symbols')
+          map('gO', require('telescope.builtin').lsp_document_symbols, 'Open Document Symbols')
 
           -- Fuzzy find all the symbols in your current workspace.
           --  Similar to document symbols, except searches over your entire project.
-          map('gW', require('telescope.builtin').lsp_dynamic_workspace_symbols,
-            'Open Workspace Symbols')
+          map('gW', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Open Workspace Symbols')
 
           -- Jump to the type of the word under your cursor.
           --  Useful when you're not sure what type a variable is and you want to see
           --  the definition of its *type*, not where it was *defined*.
-          map('grt', require('telescope.builtin').lsp_type_definitions,
-            '[G]oto [T]ype Definition')
+          map('grt', require('telescope.builtin').lsp_type_definitions, '[G]oto [T]ype Definition')
 
           -- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
           ---@param client vim.lsp.Client
@@ -329,7 +323,7 @@ return {
           ---@param bufnr? integer some lsp support methods only in specific files
           ---@return boolean
           local function client_supports_method(client, method, bufnr)
-            if vim.fn.has 'nvim-0.11' == 1 then
+            if vim.fn.has('nvim-0.11') == 1 then
               return client:supports_method(method, bufnr)
             else
               return client.supports_method(method, { bufnr = bufnr })
@@ -343,9 +337,7 @@ return {
           -- When you move your cursor, the highlights will be cleared (the second autocommand).
           local client = vim.lsp.get_client_by_id(event.data.client_id)
           if client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf) then
-            local highlight_augroup = vim.api.nvim_create_augroup(
-              'kickstart-lsp-highlight',
-              { clear = false })
+            local highlight_augroup = vim.api.nvim_create_augroup('kickstart-lsp-highlight', { clear = false })
             vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
               buffer = event.buf,
               group = highlight_augroup,
@@ -359,11 +351,10 @@ return {
             })
 
             vim.api.nvim_create_autocmd('LspDetach', {
-              group = vim.api.nvim_create_augroup('kickstart-lsp-detach',
-                { clear = true }),
+              group = vim.api.nvim_create_augroup('kickstart-lsp-detach', { clear = true }),
               callback = function(event2)
                 vim.lsp.buf.clear_references()
-                vim.api.nvim_clear_autocmds { group = 'kickstart-lsp-highlight', buffer = event2.buf }
+                vim.api.nvim_clear_autocmds({ group = 'kickstart-lsp-highlight', buffer = event2.buf })
               end,
             })
           end
@@ -374,7 +365,7 @@ return {
           -- This may be unwanted, since they displace some of your code
           if client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
             map('<leader>th', function()
-              vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
+              vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
             end, '[T]oggle Inlay [H]ints')
           end
         end,
@@ -382,7 +373,7 @@ return {
 
       -- Diagnostic Config
       -- See :help vim.diagnostic.Opts
-      vim.diagnostic.config {
+      vim.diagnostic.config({
         severity_sort = true,
         float = { border = 'rounded', source = 'if_many' },
         underline = { severity = vim.diagnostic.severity.ERROR },
@@ -407,7 +398,7 @@ return {
             return diagnostic_message[diagnostic.severity]
           end,
         },
-      }
+      })
 
       -- LSP servers and clients are able to communicate to each other what features they support.
       --  By default, Neovim doesn't support everything that is in the LSP specification.
@@ -421,9 +412,9 @@ return {
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
       })
-      require('mason-tool-installer').setup { ensure_installed = ensure_installed }
+      require('mason-tool-installer').setup({ ensure_installed = ensure_installed })
 
-      require('mason-lspconfig').setup {
+      require('mason-lspconfig').setup({
         ensure_installed = {}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
         automatic_enable = true,
         automatic_installation = false,
@@ -438,12 +429,11 @@ return {
             -- This handles overriding only values explicitly passed
             -- by the server configuration above. Useful when disabling
             -- certain features of an LSP (for example, turning off formatting for ts_ls)
-            server.capabilities = vim.tbl_deep_extend('force', {}, capabilities,
-              server.capabilities or {})
+            server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
             require('lspconfig')[server_name].setup(server)
           end,
         },
-      }
+      })
     end,
   },
 
@@ -455,7 +445,7 @@ return {
       {
         '<leader>f',
         function()
-          require('conform').format { async = true, lsp_format = 'fallback' }
+          require('conform').format({ async = true, lsp_format = 'fallback' })
         end,
         mode = '',
         desc = '[F]ormat buffer',
@@ -479,6 +469,13 @@ return {
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
+        javascript = { 'prettierd' },
+        typescript = { 'prettierd' },
+        css = { 'prettierd' },
+        json = { 'prettierd' },
+        vue = { 'prettierd' },
+        html = { 'prettierd' },
+        c_sharp = { 'csharpier' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
@@ -501,7 +498,7 @@ return {
           -- Build Step is needed for regex support in snippets.
           -- This step is not supported in many windows environments.
           -- Remove the below condition to re-enable on windows.
-          if vim.fn.has 'win32' == 1 or vim.fn.executable 'make' == 0 then
+          if vim.fn.has('win32') == 1 or vim.fn.executable('make') == 0 then
             return
           end
           return 'make install_jsregexp'
@@ -596,7 +593,7 @@ return {
     priority = 1000, -- Make sure to load this before all the other start plugins.
     config = function()
       ---@diagnostic disable-next-line: missing-fields
-      require('tokyonight').setup {
+      require('tokyonight').setup({
         style = 'moon',
         transparent = true,
         styles = {
@@ -605,12 +602,12 @@ return {
           functions = { italic = false, underline = false },
           variables = { italic = false, underline = false },
         },
-      }
+      })
 
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme 'tokyonight-moon'
+      vim.cmd.colorscheme('tokyonight-moon')
     end,
   },
 
@@ -627,7 +624,7 @@ return {
       --  - va)  - [V]isually select [A]round [)]paren
       --  - yinq - [Y]ank [I]nside [N]ext [Q]uote
       --  - ci'  - [C]hange [I]nside [']quote
-      require('mini.ai').setup { n_lines = 500 }
+      require('mini.ai').setup({ n_lines = 500 })
 
       -- Add/delete/replace surroundings (brackets, quotes, etc.)
       --
@@ -639,9 +636,9 @@ return {
       -- Simple and easy statusline.
       --  You could remove this setup call if you don't like it,
       --  and try some other statusline plugin
-      local statusline = require 'mini.statusline'
+      local statusline = require('mini.statusline')
       -- set use_icons to true if you have a Nerd Font
-      statusline.setup { use_icons = vim.g.have_nerd_font }
+      statusline.setup({ use_icons = vim.g.have_nerd_font })
 
       -- You can configure sections in the statusline by overriding their
       -- default behavior. For example, here we set the section for
