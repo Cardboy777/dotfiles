@@ -418,22 +418,34 @@ return {
         ensure_installed = {}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
         automatic_enable = true,
         automatic_installation = false,
-        handlers = {
-          function(server_name)
-            local server_config_path = 'v1/lsp/server_configurations/' .. server_name
-
-            local require_ok, server = pcall(require, server_config_path)
-            if not require_ok then
-              server = {}
-            end
-            -- This handles overriding only values explicitly passed
-            -- by the server configuration above. Useful when disabling
-            -- certain features of an LSP (for example, turning off formatting for ts_ls)
-            server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-            require('lspconfig')[server_name].setup(server)
-          end,
-        },
       })
+
+      local debug_server_list = {
+        -- 'ts_ls',
+        -- 'vue_ls'
+      }
+
+      for _, server_name in ipairs(require('mason-lspconfig').get_installed_servers()) do
+        local server_config_path = 'v1/lsp/server_configurations/' .. server_name
+
+        local require_ok, server = pcall(require, server_config_path)
+
+        if not require_ok then
+          server = {}
+        end
+
+        for _, debug_server_name in ipairs(debug_server_list) do
+          if server_name == debug_server_name then
+            vim.print(server_name, require_ok, server, '\n')
+          end
+        end
+
+        -- This handles overriding only values explicitly passed
+        -- by the server configuration above. Useful when disabling
+        -- certain features of an LSP (for example, turning off formatting for ts_ls)
+        server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
+        require('lspconfig')[server_name].setup(server)
+      end
     end,
   },
 
