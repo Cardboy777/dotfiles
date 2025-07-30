@@ -1,7 +1,7 @@
 #!/bin/bash
 
 notify=$1
-monitor="DP-2"
+monitor="DP-3"
 
 if ! pgrep -x "gpu-screen-reco" >/dev/null; then
     audio="$(pactl get-default-sink).monitor|$(pactl get-default-source)"

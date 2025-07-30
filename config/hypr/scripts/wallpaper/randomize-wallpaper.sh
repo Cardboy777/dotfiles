@@ -61,6 +61,6 @@ WallpaperRootDir="$HOME/Pictures/Sorted_Wallpapers"
 #
 # setWallpapers
 
-waypaper --random --monitor DP-2 --folder="$WallpaperRootDir/1920x1080"
+waypaper --random --monitor DP-1 --folder="$WallpaperRootDir/1920x1080"
 waypaper --random --monitor DP-3 --folder="$WallpaperRootDir/2560x1440"
 waypaper --random --monitor HDMI-A-1 --folder="$WallpaperRootDir/1080x1920"
