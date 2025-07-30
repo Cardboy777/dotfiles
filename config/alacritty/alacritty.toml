@@ -19,9 +19,8 @@ shell = "/bin/fish"
 
 [keyboard]
 bindings = [
-	{ key = '-', mods='Control', action='None' },
+	{ key = '-', mods='Control', action='ReceiveChar' },
 	{ key = '-', mods='Shift|Control',  action='DecreaseFontSize' },
-
-	{ key = '+', mods='Control', action='None' },
-	{ key = '+', mods='Shift|Control', action='IncreaseFontSize' },
+	{ key = '=', mods='Control', action='ReceiveChar' },
+	{ key = '=', mods='Shift|Control', action='IncreaseFontSize' },
 ]
