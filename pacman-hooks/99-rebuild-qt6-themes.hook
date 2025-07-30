@@ -6,6 +6,6 @@ Target=qt6-base
 [Action]
 Description=Rebuild QT GTK themes
 When=PostTransaction
-Exec=paru -S --rebuild qt6gtk2 qt5gtk2
-Depends=paru
+Exec=sudo pacman -S --rebuild qt6gtk2
+Depends=pacman
 
