@@ -8,8 +8,20 @@
 	process = git-lfs filter-process
 [init]
 	defaultBranch = main
-[difftool]
+[merge]
+	tool = bcompare
+[mergetool]
 	prompt = false
+[mergetool "bcompare"]
+	trustExitCode=true
+	cmd = bcompare \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\"
+[diff]
+    tool = bcompare
+[difftool]
+    prompt = false
+[difftool "bcompare"]
+    trustExitCode = true
+    cmd = bcompare \"$LOCAL\" \"$REMOTE\"
 [credential]
 	credentialStore = secretservice
 	helper = /usr/lib/git-core/git-credential-libsecret

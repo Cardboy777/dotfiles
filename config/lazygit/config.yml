@@ -2,6 +2,11 @@
 gui:
   showBottomLine: false
   showRandomTip: false
-  nerdfontsVersion: '3'
+  nerdFontsVersion: '3'
 
 disableStartupPopups: true
+customCommands:
+  - key: '<c-d>'
+    context: 'files'
+    command: 'git difftool {{.SelectedFile.Name}}'
+
