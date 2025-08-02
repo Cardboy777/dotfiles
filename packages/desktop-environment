@@ -9,6 +9,7 @@ hyprshot
 imv
 network-manager-applet
 pam_autologin
+pantheon-polkit-agent
 sddm
 swappy
 swww
