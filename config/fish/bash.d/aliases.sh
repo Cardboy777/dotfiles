@@ -11,6 +11,8 @@ alias firefox=brave
 
 alias neofetch=fastfetch
 
+alias hosts=cat /etc/hosts | grep "192\.168\.1\..*"
+
 # tmux
 alias tl='tmux ls'
 alias ta='tmux a -t'
