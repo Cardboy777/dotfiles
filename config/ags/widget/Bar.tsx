@@ -1,7 +1,7 @@
 import { Astal, Gtk, Gdk } from "astal/gtk3"
 import { Workspaces } from "./Workspaces"
 import { FocusedClient } from "./FocusedClient"
-import { EnteAuth } from "./EnteAuth"
+import { Authenticator } from "./Authenticator"
 import { Media } from "./Media"
 import { MicrophoneMute } from "./MicrophoneMute"
 import { Clock } from "./Clock"
@@ -30,7 +30,7 @@ export default function Bar(monitor: Gdk.Monitor) {
             <box hexpand halign={Gtk.Align.END} >
                 <GPURecorder />
                 <MicrophoneMute />
-                <EnteAuth />
+                <Authenticator />
                 <SystemTray />
                 <BatteryLevel />
                 <Clock />
