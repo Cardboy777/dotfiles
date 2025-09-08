@@ -1,0 +1,10 @@
+[Trigger]
+Operation=Upgrade
+Type=Package
+Target=cockpit
+
+[Action]
+Description=Remove the motd message added by cockpit
+When=PostTransaction
+Exec=sudo rm /etc/motd.d/cockpit
+Depends=rm
