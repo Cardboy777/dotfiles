@@ -6,6 +6,6 @@ Target=qt5-base
 [Action]
 Description=Rebuild QT GTK themes
 When=PostTransaction
-Exec=sudo pacman -S --rebuild qt5-styleplugins
-Depends=pacman
+Exec=paru -S --rebuild --skipreview --noconfirm qt5-styleplugins
+Depends=paru
 
