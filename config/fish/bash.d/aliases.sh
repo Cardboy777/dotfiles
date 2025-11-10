@@ -11,6 +11,8 @@ alias firefox=zen-browser
 
 alias neofetch=fastfetch
 
+alias addLutrisGame='$HOME/.config/fish/bash.d/scripts/add-lutris-game.sh'
+
 # tmux
 alias tl='tmux ls'
 alias ta='tmux a -t'
