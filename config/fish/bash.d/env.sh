@@ -8,7 +8,7 @@ export XDG_STATE_HOME=$HOME/.local/state
 
 export TERMINAL=alacritty
 export EDITOR=nvim
-export BROWSER=brave
+export BROWSER=zen-browser
 export MANPAGER="less -R --use-color -Dd+r -Du+b"
 
 #mason bin

@@ -7,7 +7,7 @@ alias htop=btop
 alias ls=eza
 alias cat=bat
 
-alias firefox=brave
+alias firefox=zen-browser
 
 alias neofetch=fastfetch
 
