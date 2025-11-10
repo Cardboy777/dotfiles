@@ -5,7 +5,7 @@
 	<name>Open Terminal Here</name>
 	<submenu></submenu>
 	<unique-id>1611168259857250-1</unique-id>
-	<command>$TERMINAL %d</command>
+	<command>alacritty</command>
 	<description>Example for a custom action</description>
 	<range></range>
 	<patterns>*</patterns>
@@ -17,7 +17,7 @@
 	<name>Open in NeoVim</name>
 	<submenu></submenu>
 	<unique-id>1700719920918052-1</unique-id>
-	<command>$TERMINAL -e nvim %F</command>
+	<command>/usr/bin/alacritty -e /usr/bin/nvim %f</command>
 	<description>Open in NeoVim</description>
 	<range>*</range>
 	<patterns>*</patterns>
