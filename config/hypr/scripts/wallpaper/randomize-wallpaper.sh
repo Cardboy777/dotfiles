@@ -1,11 +1,11 @@
 #!/bin/bash
 
-WallpaperRootDir="$HOME/Pictures/Sorted_Wallpapers"
+# WallpaperRootDir="$HOME/Pictures/Sorted_Wallpapers"
 
-# function getRandomFile() {
-#     local dir=$1
-#     find "$dir" -maxdepth 1 | sort -R | tail -n 1
-# }
+function getRandomFile() {
+	local dir=$1
+	find "$dir" -maxdepth 1 | sort -R | tail -n 1
+}
 #
 # function setSwww() {
 #     local monitor=$1
@@ -61,6 +61,22 @@ WallpaperRootDir="$HOME/Pictures/Sorted_Wallpapers"
 #
 # setWallpapers
 
-waypaper --random --monitor DP-1 --folder="$WallpaperRootDir/1920x1080"
-waypaper --random --monitor DP-3 --folder="$WallpaperRootDir/2560x1440"
-waypaper --random --monitor HDMI-A-1 --folder="$WallpaperRootDir/1080x1920"
+# waypaper --backend=hyprpaper --random --monitor DP-1 --folder="$WallpaperRootDir/1920x1080"
+# waypaper --backend=hyprpaper --random --monitor DP-3 --folder="$WallpaperRootDir/2560x1440"
+# waypaper --backend=hyprpaper --random --monitor HDMI-A-1 --folder="$WallpaperRootDir/1080x1920"
+
+STEAM_GAME_INSTALL_DIR=/mnt/games/SteamLibrary/steamapps/
+WALLPAPER_ENGINE_INSTALL=$STEAM_GAME_INSTALL_DIR/common/wallpaper_engine
+WALLPAPER_ENGINE_WORKSHOP_INSTALL=$STEAM_GAME_INSTALL_DIR/workshop/content/431960
+
+OLD_INSTANCES=$(pgrep -f "linux-wallpaperengine")
+
+nohup linux-wallpaperengine --silent --assets-dir="$WALLPAPER_ENGINE_INSTALL/assets" \
+	--screen-root "DP-1" --bg "$(getRandomFile "$WALLPAPER_ENGINE_WORKSHOP_INSTALL")" \
+	--screen-root "DP-3" --bg "$(getRandomFile "$WALLPAPER_ENGINE_WORKSHOP_INSTALL")" \
+	--screen-root "HDMI-A-1" --bg "$(getRandomFile "$WALLPAPER_ENGINE_WORKSHOP_INSTALL")" \
+	>/dev/null 2>&1 &
+
+echo "$OLD_INSTANCES"
+
+echo "$OLD_INSTANCES" | xargs kill

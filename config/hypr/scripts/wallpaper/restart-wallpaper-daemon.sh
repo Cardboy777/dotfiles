@@ -10,7 +10,7 @@ function restartHyprpaper() {
 }
 function restartSwww() {
     pkill -x swww-daemon
-    nohup swww-daemon -f xrgb >/dev/null 2>&1 &
+    nohup swww-daemon -f argb >/dev/null 2>&1 &
 }
 
 function restartWallpaperDaemon() {
@@ -23,7 +23,7 @@ function restartWallpaperDaemon() {
         restartSwww
     else
         echo "Cannot find wallpaper daemon, starting one..."
-        restartSwww
+        restartHyprpaper
     fi
     return 0
 }
