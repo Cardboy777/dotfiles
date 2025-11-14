@@ -73,7 +73,7 @@ function setWallpaperEngine() {
 	local OLD_INSTANCES
 	OLD_INSTANCES=$(pgrep -f "linux-wallpaperengine")
 
-	nohup linux-wallpaperengine --silent --assets-dir="$WALLPAPER_ENGINE_INSTALL/assets" \
+	nohup linux-wallpaperengine --clamp border --silent --assets-dir="$WALLPAPER_ENGINE_INSTALL/assets" \
 		--screen-root "DP-1" --bg "$(getRandomFile "$WALLPAPER_ENGINE_WORKSHOP_INSTALL")" \
 		--screen-root "DP-3" --bg "$(getRandomFile "$WALLPAPER_ENGINE_WORKSHOP_INSTALL")" \
 		--screen-root "HDMI-A-1" --bg "$(getRandomFile "$WALLPAPER_ENGINE_WORKSHOP_INSTALL")" \
