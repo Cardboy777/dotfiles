@@ -4,3 +4,5 @@ config/btop/btop.log
 config/hypr/scripts/gpu-screen-recorder/RUNNING
 config/spicetify/Extracted
 config/fish/bash.d/scripts/add-lutris-game.sh
+config/Thunar/accels.scm
+config/nvim/lazy-lock.json
