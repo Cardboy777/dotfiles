@@ -1,0 +1,40 @@
+
+window-rule {
+    geometry-corner-radius 8
+    clip-to-geometry true
+}
+
+window-rule {
+	match app-id=r#"^Rofi$"
+	open-floating true
+	open-focused true
+}
+
+window-rule {
+	match app-id=r#"^steam$"
+	block-out-from "screen-capture"
+	block-out-from "screencast"
+}
+
+window-rule {
+	match app-id=r#"^vesktop$"
+	block-out-from "screen-capture"
+	block-out-from "screencast"
+}
+
+// floating windows
+window-rule {
+	match title="([Oo]pen|[Ss]elect|[Cc]hoose) ?([Ff]ile|[Ff]older|[Dd]irectory)?"
+	match app-id="xdg-desktop-portal-gtk"
+	match app-id=r#"^org.kde.polkit-kde-authentication-agent-[0-9]+$"
+	//steam chat
+	match app-id=r#"^steam$" title="\([a-zA-Z ]+\)$"
+	match app-id=r#"^steam$" title="^Friends List$"
+
+	match title="^Winetricks"
+	match app-id=r#"^[Tt]hunar$"
+	match app-id=r#".*pwvucontrol.*"
+	match app-id=r#"^blueman-manager$"
+
+	open-floating true
+}

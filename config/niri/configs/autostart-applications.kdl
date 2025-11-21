@@ -1,0 +1,17 @@
+spawn-at-startup "/usr/lib/policykit-1-pantheon/io.elementary.desktop.agent-polkit"
+
+spawn-at-startup "swaync"
+spawn-sh-at-startup "$HOME/.config/hypr/scripts/restartAgs.sh"
+spawn-at-startup "/usr/bin/nm-applet"
+spawn-at-startup "blueman-applet"
+spawn-at-startup "kwalletd5"
+
+spawn-at-startup "wl-paste" "--type" "text" "--watch" "cliphist" "store"
+spawn-at-startup "wl-paste" "--type" "image" "--watch" "cliphist" "store"
+spawn-at-startup "steam" "-silent"
+spawn-at-startup "flatpak" "run" "com.github.wwmm.easyeffects" "--gapplication-service"
+spawn-at-startup "flatpak" "run" "dev.vencord.Vesktop" "--start-minimized"
+
+spawn-at-startup "flatpak" "run" "org.fkoehler.KTailctl"
+
+spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
