@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Produced by Beyond Compare 5 from Scooter Software -->
+<BCPreferences Version="2" MinVersion="2">
+	<TBcPrefs>
+		<CheckForUpdatesDayAmt Value="0"/>
+		<ChildViewNewTab Value="False"/>
+		<FileVertScrollBarSingle Value="True"/>
+		<NextDiffLoadFirst Value="True"/>
+		<TabsConfirmClose Value="False"/>
+		<TextSyntaxDiffs Value="True"/>
+		<ViewNewTab Value="False"/>
+	</TBcPrefs>
+</BCPreferences>
