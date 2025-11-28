@@ -14,7 +14,7 @@ sudo flatpak override --filesystem="$HOME/.themes"
 sudo flatpak override --filesystem="$HOME/.icons"
 sudo flatpak override --filesystem=xdg-config/gtk-4.0
 sudo flatpak override --env=GTK_THEME=Tokyonight-Dark-Moon
-sudo flatpak override --env=QT_QPA_PLATFORMTHEME=gtk2
+sudo flatpak override --env=QT_QPA_PLATFORMTHEME=gtk3
 flatpak override --user --filesystem=xdg-config/gtk-4.0
 
 echo "==Configure with tools=="

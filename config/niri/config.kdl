@@ -277,7 +277,7 @@ layout {
 
 hotkey-overlay {
     // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.
-    // skip-at-startup
+    skip-at-startup
 }
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
@@ -484,6 +484,7 @@ binds {
     Mod+Escape hotkey-overlay-title="Toggle Mic Mute" { spawn-sh "$HOME/.config/hypr/scripts/toggle-mic-mute.sh"; }
 
 	Mod+W hotkey-overlay-title="Change Wallpaper" { spawn-sh "$HOME/.config/hypr/scripts/wallpaper/randomize-wallpaper.sh"; }
+	Mod+T hotkey-overlay-title="Select Tailscale Exit Node" { spawn-sh "$HOME/.config/fish/bash.d/scripts/pick-tailscale-exit-node.sh"; }
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.
     // For example, this is a standard bind to toggle the screen reader (orca).

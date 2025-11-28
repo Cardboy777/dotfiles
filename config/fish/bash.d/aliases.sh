@@ -12,6 +12,7 @@ alias firefox=brave
 alias neofetch=fastfetch
 
 alias addLutrisGame='$HOME/.config/fish/bash.d/scripts/add-lutris-game.sh'
+alias tailscaleExitNode='$HOME/.config/fish/bash.d/scripts/pick-tailscale-exit-node-cli.sh'
 
 # tmux
 alias tl='tmux ls'
