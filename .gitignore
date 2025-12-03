@@ -6,3 +6,7 @@ config/spicetify/Extracted
 config/fish/bash.d/scripts/add-lutris-game.sh
 config/Thunar/accels.scm
 config/nvim/lazy-lock.json
+config/tmux/plugins/minimal-tmux-status
+config/tmux/plugins/tmux-fuzzback
+config/tmux/plugins/tmux-fzf
+config/tmux/plugins/tmux-sensible
