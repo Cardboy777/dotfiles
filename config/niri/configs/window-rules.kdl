@@ -1,40 +1,54 @@
+layer-rule {
+	match namespace="linux-wallpaperengine"
+	block-out-from "screen-capture"
+}
 
 window-rule {
     geometry-corner-radius 8
     clip-to-geometry true
+	draw-border-with-background false
 }
 
 window-rule {
-	match app-id=r#"^Rofi$"
+	match app-id=r#"^Rofi$"#
 	open-floating true
 	open-focused true
 }
 
 window-rule {
-	match app-id=r#"^steam$"
+	match app-id="steam"
+	match app-id="vesktop"
 	block-out-from "screen-capture"
-	block-out-from "screencast"
-}
-
-window-rule {
-	match app-id=r#"^vesktop$"
-	block-out-from "screen-capture"
-	block-out-from "screencast"
 }
 
 // floating windows
 window-rule {
-	match title="([Oo]pen|[Ss]elect|[Cc]hoose) ?([Ff]ile|[Ff]older|[Dd]irectory)?"
+	match title=r#"([Oo]pen|[Ss]elect|[Cc]hoose) ?([Ff]ile|[Ff]older|[Dd]irectory)?"#
 	match app-id="xdg-desktop-portal-gtk"
-	match app-id=r#"^org.kde.polkit-kde-authentication-agent-[0-9]+$"
+	match app-id=r#"^org.kde.polkit-kde-authentication-agent-[0-9]+$"#
 	//steam chat
-	match app-id=r#"^steam$" title="\([a-zA-Z ]+\)$"
-	match app-id=r#"^steam$" title="^Friends List$"
+	match app-id="steam" title=r#"\([a-zA-Z ]+\)$"#
+	match app-id="steam" title="Friends List"
 
-	match title="^Winetricks"
-	match app-id=r#"^[Tt]hunar$"
-	match app-id=r#".*pwvucontrol.*"
-	match app-id=r#"^blueman-manager$"
+	match title="Winetricks"
+	match app-id=r#"^[Tt]hunar$"#
+	match app-id=r#".*pwvucontrol.*"#
+	match app-id="blueman-manager"
 
 	open-floating true
+}
+
+//fix steam notifications
+window-rule {
+    match app-id="steam" title=r#"^notificationtoasts_\d+_desktop$"#
+    default-floating-position x=10 y=10 relative-to="bottom-right"
+	open-focused false
+
+	geometry-corner-radius 0
+	focus-ring {
+		off
+	}
+	border {
+		off
+	}
 }

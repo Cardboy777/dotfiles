@@ -9,9 +9,8 @@ spawn-at-startup "kwalletd5"
 spawn-at-startup "wl-paste" "--type" "text" "--watch" "cliphist" "store"
 spawn-at-startup "wl-paste" "--type" "image" "--watch" "cliphist" "store"
 spawn-at-startup "steam" "-silent"
-spawn-at-startup "flatpak" "run" "com.github.wwmm.easyeffects" "--gapplication-service"
+spawn-at-startup "easyeffects" "--gapplication-service"
 spawn-at-startup "flatpak" "run" "dev.vencord.Vesktop" "--start-minimized"
 
 spawn-at-startup "flatpak" "run" "org.fkoehler.KTailctl"
 
-spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"

@@ -2,6 +2,8 @@
 
 WallpaperRootDir="$HOME/Pictures/Sorted_Wallpapers"
 
+ONLY_KILL=$1
+
 function getRandomFile() {
 	local dir=$1
 	find "$dir" -maxdepth 1 | sort -R | tail -n 1
@@ -73,11 +75,13 @@ function setWallpaperEngine() {
 	local OLD_INSTANCES
 	OLD_INSTANCES=$(pgrep -f "linux-wallpaperengine")
 
-	nohup linux-wallpaperengine --clamp border --silent --assets-dir="$WALLPAPER_ENGINE_INSTALL/assets" \
-		--screen-root "DP-1" --bg "$(getRandomFile "$WALLPAPER_ENGINE_WORKSHOP_INSTALL")" \
-		--screen-root "DP-3" --bg "$(getRandomFile "$WALLPAPER_ENGINE_WORKSHOP_INSTALL")" \
-		--screen-root "HDMI-A-1" --bg "$(getRandomFile "$WALLPAPER_ENGINE_WORKSHOP_INSTALL")" \
-		>/dev/null 2>&1 &
+	if [ -z "$ONLY_KILL" ]; then
+		nohup linux-wallpaperengine --clamp border --silent --assets-dir="$WALLPAPER_ENGINE_INSTALL/assets" \
+			--screen-root "DP-1" --bg "$(getRandomFile "$WALLPAPER_ENGINE_WORKSHOP_INSTALL")" \
+			--screen-root "DP-3" --bg "$(getRandomFile "$WALLPAPER_ENGINE_WORKSHOP_INSTALL")" \
+			--screen-root "HDMI-A-1" --bg "$(getRandomFile "$WALLPAPER_ENGINE_WORKSHOP_INSTALL")" \
+			>"$HOME/.cache/linux-wallpaperengine.log" 2>&1 &
+	fi
 
 	echo "$OLD_INSTANCES"
 
